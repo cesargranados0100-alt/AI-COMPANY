@@ -270,11 +270,23 @@
       inset: 0;
       z-index: 0;
     }
-    .hero-bg video {
+    .hero-video-wrap {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 100vw;
+      height: 56.25vw;   /* ratio 16:9 */
+      min-height: 100%;
+      min-width: 177.78vh;
+      transform: translate(-50%, -50%) scale(1);
+      transform-origin: center center;
+      will-change: transform;
+    }
+    .hero-video-wrap iframe {
+      position: absolute;
+      inset: 0;
       width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 1;
-      transition: opacity .1s;
+      border: none;
+      pointer-events: none;
     }
     .hero-bg::after {
       content: '';
@@ -870,7 +882,15 @@
 <div id="hero-scroll">
 <section id="hero">
   <div class="hero-bg">
-    <video id="hero-video" src="assets/hero.mp4" autoplay muted playsinline loop preload="auto"></video>
+    <div class="hero-video-wrap" id="hero-video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/2z2WBHstAjo?autoplay=1&mute=1&loop=1&playlist=2z2WBHstAjo&controls=0&rel=0&modestbranding=1&playsinline=1&showinfo=0"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        title="AI Company CO Hero Video"
+      ></iframe>
+    </div>
   </div>
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
@@ -1319,42 +1339,33 @@
 </footer>
 
 <script>
-  // ── SCROLL VIDEO ──
-  const heroVideo  = document.getElementById('hero-video');
-  const heroScroll = document.getElementById('hero-scroll');
-  const heroContent = document.querySelector('.hero-content');
-  const progressBar = document.getElementById('scroll-progress');
-
-  heroVideo.addEventListener('loadedmetadata', () => {
-    heroVideo.pause();
-    heroVideo.currentTime = 0;
-  });
+  // ── SCROLL HERO PARALLAX ──
+  const heroVideoWrap = document.getElementById('hero-video-wrap');
+  const heroScroll    = document.getElementById('hero-scroll');
+  const heroContent   = document.querySelector('.hero-content');
+  const progressBar   = document.getElementById('scroll-progress');
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 
   window.addEventListener('scroll', () => {
-    const rect   = heroScroll.getBoundingClientRect();
-    const total  = heroScroll.offsetHeight - window.innerHeight;
+    const rect     = heroScroll.getBoundingClientRect();
+    const total    = heroScroll.offsetHeight - window.innerHeight;
     const scrolled = Math.max(0, -rect.top);
     const progress = Math.min(scrolled / total, 1); // 0 → 1
 
-    // — scrub video
-    if (heroVideo.readyState >= 2 && heroVideo.duration) {
-      heroVideo.currentTime = heroVideo.duration * progress;
-    }
+    // — parallax + zoom en el video de fondo
+    const scale      = 1 + progress * 0.12;
+    const translateY = progress * -50;
+    heroVideoWrap.style.transform =
+      `translate(-50%, calc(-50% + ${translateY}px)) scale(${scale})`;
 
-    // — progress bar
+    // — barra de progreso
     progressBar.style.width = (progress * 100) + '%';
 
-    // — fade & lift content as scroll advances
+    // — fade & lift del contenido hero
     const contentOpacity = progress < 0.6 ? 1 : lerp(1, 0, (progress - 0.6) / 0.4);
-    const contentY       = progress * -60;
     heroContent.style.opacity   = contentOpacity;
-    heroContent.style.transform = `translateY(${contentY}px)`;
-
-    // — video scale: zoom in slightly on scroll
-    const scale = 1 + progress * 0.08;
-    heroVideo.style.transform = `scale(${scale})`;
+    heroContent.style.transform = `translateY(${progress * -60}px)`;
   }, { passive: true });
 
   // Header scroll
