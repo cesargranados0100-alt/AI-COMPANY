@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asistente de IA Personalizado para tu Empresa | AI Company CO</title>
+<meta name="description" content="Desarrollamos asistentes de IA personalizados para empresas colombianas. GPT-4, tecnología RAG, voz e integración con tus sistemas. Automatiza tareas internas y potencia a tu equipo." />
+<link rel="canonical" href="https://aicompanyco.com/servicios/asistente-ia/" />
+<link rel="icon" type="image/png" href="../../logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Asistente de IA Personalizado para Empresas",
+  "description": "Desarrollo de asistentes de IA personalizados con GPT-4, RAG y voz para empresas colombianas. Automatización interna, análisis de datos y productividad del equipo.",
+  "provider": {
+    "@type": "Organization",
+    "name": "AI Company CO",
+    "url": "https://aicompanyco.com",
+    "email": "agencia@aicompanyco.com"
+  },
+  "areaServed": "CO"
+}
+</script>
+<style>
+  :root {
+    --purple-dark: #5A00B8;
+    --purple-light: #9B5FFF;
+    --bg: #0D0D14;
+    --bg2: #12121C;
+    --text: #E8E8F0;
+    --text-muted: #8A8D99;
+    --border: rgba(90,0,184,0.18);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.7; }
+  h1,h2,h3 { font-family: 'Orbitron', monospace; }
+  a { color: var(--purple-light); }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 5%; }
+  .hero { padding: 9rem 5% 5rem; text-align: center; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(90,0,184,0.22) 0%, transparent 70%); }
+  .badge { display: inline-block; background: rgba(90,0,184,0.25); border: 1px solid var(--border); color: var(--purple-light); padding: 0.3rem 1rem; border-radius: 100px; font-size: 0.78rem; letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+  .hero h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 2rem; }
+  .btn-wa { display: inline-block; background: #25D366; color: #fff; padding: 0.85rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 1rem; }
+  section { padding: 4rem 5%; }
+  .section-title { font-size: clamp(1.2rem, 2.5vw, 1.7rem); margin-bottom: 0.8rem; color: #fff; }
+  .section-sub { color: var(--text-muted); margin-bottom: 2.5rem; max-width: 640px; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; }
+  .card-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .card h3 { font-size: 1rem; margin-bottom: 0.6rem; color: var(--purple-light); }
+  .card p { font-size: 0.88rem; color: var(--text-muted); }
+  .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media(max-width:600px){ .diff-grid { grid-template-columns: 1fr; } }
+  .diff-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.8rem; }
+  .diff-box.ours { border-color: var(--purple-dark); }
+  .diff-box h3 { font-size: 0.9rem; margin-bottom: 1rem; }
+  .diff-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .diff-box li { font-size: 0.87rem; color: var(--text-muted); }
+  .diff-box.ours li::before { content: "✓ "; color: #4ade80; }
+  .diff-box:not(.ours) li::before { content: "✗ "; color: #f87171; }
+  .steps { display: flex; flex-direction: column; gap: 1.5rem; }
+  .step { display: flex; gap: 1.2rem; align-items: flex-start; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; }
+  .step-num { background: var(--purple-dark); color: #fff; font-family: 'Orbitron', monospace; font-weight: 700; font-size: 1.1rem; min-width: 2.4rem; height: 2.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step h3 { font-size: 1rem; color: var(--purple-light); margin-bottom: 0.4rem; }
+  .step p { font-size: 0.88rem; color: var(--text-muted); }
+  .faq { display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.4rem; }
+  .faq-item h3 { font-size: 0.95rem; color: #fff; margin-bottom: 0.5rem; font-family: 'DM Sans', sans-serif; font-weight: 500; }
+  .faq-item p { font-size: 0.87rem; color: var(--text-muted); }
+  .cta-section { background: radial-gradient(ellipse 80% 100% at 50% 50%, rgba(90,0,184,0.18) 0%, transparent 70%); text-align: center; padding: 5rem 5%; }
+  .breadcrumb { padding: 6rem 5% 0; font-size: 0.82rem; color: var(--text-muted); }
+  .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--purple-light); }
+  .tools-list { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .tool-badge { background: rgba(155,95,255,0.12); border: 1px solid rgba(155,95,255,0.3); color: var(--purple-light); padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.82rem; }
+  .highlight { color: var(--purple-light); }
+  @media (max-width: 768px) {
+    nav span { display: none; }
+    .hero { padding: 6rem 5% 3rem; }
+    .hero p { font-size: 0.95rem; }
+    section { padding: 2.5rem 5%; }
+    .card-grid { grid-template-columns: 1fr; }
+    .price-box { padding: 1.8rem; }
+    .price-box .price { font-size: 1.8rem; }
+    .cta-section { padding: 3rem 5%; }
+    .breadcrumb { padding: 5rem 5% 0; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 1.5rem; }
+    .btn-wa, .btn-primary { display: block; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:rgba(13,13,20,0.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(90,0,184,0.18);">
+  <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <img src="../../logo.png" alt="AI Company CO" style="width:40px;height:40px;object-fit:contain;mix-blend-mode:screen;">
+    <span style="font-family:'Orbitron',monospace;font-size:0.9rem;font-weight:700;color:#fff;letter-spacing:0.1em;">AI COMPANY CO</span>
+  </a>
+  <a href="/#contacto" style="background:#5A00B8;color:#fff;padding:0.6rem 1.4rem;border-radius:4px;text-decoration:none;font-size:0.82rem;font-weight:500;">Hablemos →</a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Inicio</a> / <a href="/servicios/">Servicios</a> / Asistente de IA
+</div>
+
+<section class="hero">
+  <div class="badge">ASISTENTE DE IA PERSONALIZADO</div>
+  <h1>Un empleado digital que<br><span class="highlight">conoce tu empresa</span> de memoria</h1>
+  <p>No es ChatGPT genérico. Es un asistente de IA entrenado con el conocimiento, los procesos y el lenguaje de tu empresa — listo para potenciar a tu equipo o automatizar tareas internas complejas.</p>
+  <a href="https://wa.me/573212674754?text=Hola,%20quiero%20un%20asistente%20de%20IA%20personalizado%20para%20mi%20empresa" class="btn-wa">Hablemos de mi asistente IA →</a>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">¿Qué es un asistente de IA personalizado?</h2>
+    <p style="color:var(--text-muted); margin-bottom:1.2rem;">Un asistente de IA personalizado es un sistema de inteligencia artificial diseñado específicamente para las necesidades de tu empresa. A diferencia de herramientas genéricas como ChatGPT, este asistente conoce tu catálogo, tus procesos internos, tus clientes, tu tono de comunicación y puede integrarse directamente con tus sistemas de trabajo.</p>
+    <p style="color:var(--text-muted);">Puede funcionar internamente (ayudando a tu equipo a ser más productivo) o externamente (atendiendo clientes y realizando tareas en tu nombre). La clave está en que opera con el contexto específico de tu negocio, lo que lo hace infinitamente más útil que cualquier IA genérica.</p>
+  </div>
+</section>
+
+<section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">ChatGPT genérico vs. Asistente personalizado</h2>
+    <p class="section-sub">La diferencia es radical cuando tu negocio necesita respuestas precisas, no respuestas probables.</p>
+    <div class="diff-grid">
+      <div class="diff-box">
+        <h3 style="color:var(--text-muted);">ChatGPT genérico</h3>
+        <ul>
+          <li>No conoce tu empresa ni tus productos</li>
+          <li>No accede a tus sistemas o datos</li>
+          <li>Inventa información (alucinaciones)</li>
+          <li>Sin control sobre las respuestas</li>
+          <li>No se integra con tus herramientas</li>
+          <li>Tus datos pasan por servidores de terceros</li>
+        </ul>
+      </div>
+      <div class="diff-box ours">
+        <h3 style="color:var(--purple-light);">Asistente personalizado AI Company CO</h3>
+        <ul>
+          <li>Entrenado con documentación de tu empresa</li>
+          <li>Accede a tus datos en tiempo real vía API</li>
+          <li>Respuestas precisas basadas en fuentes reales</li>
+          <li>Personalidad y límites definidos por ti</li>
+          <li>Integrado con CRM, ERP, Google Workspace</li>
+          <li>Control total sobre privacidad y datos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Casos de uso empresarial</h2>
+    <p class="section-sub">Aplicaciones reales donde el asistente multiplica la productividad de tu empresa.</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>Asistente para el equipo de ventas</h3>
+        <p>Consulta precios, disponibilidad, fichas técnicas y genera propuestas comerciales personalizadas en segundos. Tu equipo cierra más rápido.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📖</div>
+        <h3>Base de conocimiento inteligente</h3>
+        <p>Centraliza manuales, procesos y políticas. Cualquier empleado pregunta en lenguaje natural y recibe la respuesta exacta del documento correcto.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Análisis de datos e informes</h3>
+        <p>El asistente analiza tus datos de ventas, inventario o finanzas y genera informes, gráficas y recomendaciones en lenguaje natural sin necesidad de analistas.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✉️</div>
+        <h3>Redacción y comunicación</h3>
+        <p>Genera correos, propuestas, contratos, textos de marketing y respuestas a clientes con el tono y estilo de tu empresa en segundos.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <h3>Automatización de procesos internos</h3>
+        <p>Ejecuta flujos de trabajo: aprobaciones, notificaciones, actualización de registros, creación de tareas — activado por instrucciones en lenguaje natural.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎙️</div>
+        <h3>Asistente por voz</h3>
+        <p>Para empresas que necesitan manos libres: asistente activado por voz para tomar pedidos, registrar notas, consultar información y ejecutar acciones en el CRM.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">Tecnologías que usamos</h2>
+    <p class="section-sub">Las mejores herramientas de IA del mercado, combinadas para construir el asistente más capaz para tu negocio.</p>
+    <div class="tools-list">
+      <span class="tool-badge">GPT-4o (OpenAI)</span>
+      <span class="tool-badge">Claude 3.5 (Anthropic)</span>
+      <span class="tool-badge">RAG — Retrieval Augmented Generation</span>
+      <span class="tool-badge">Whisper (voz a texto)</span>
+      <span class="tool-badge">ElevenLabs (texto a voz)</span>
+      <span class="tool-badge">LangChain / LangGraph</span>
+      <span class="tool-badge">Pinecone</span>
+      <span class="tool-badge">n8n / Make</span>
+      <span class="tool-badge">Google Workspace API</span>
+      <span class="tool-badge">Microsoft 365 API</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Proceso de creación</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>Definición de casos de uso y alcance</h3>
+          <p>Identificamos exactamente qué tareas debe realizar el asistente, qué información necesita conocer y con qué sistemas debe integrarse. Priorizamos por impacto y viabilidad.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>Recopilación y preparación de datos</h3>
+          <p>Reunimos, limpiamos y estructuramos la documentación, bases de datos y contenido de tu empresa. Preparamos el corpus de conocimiento que alimentará al asistente.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>Construcción del asistente</h3>
+          <p>Desarrollamos el sistema de IA, configuramos las instrucciones del sistema (system prompt), implementamos RAG para acceso a documentos y construimos las integraciones necesarias.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h3>Evaluación y ajuste fino</h3>
+          <p>Probamos el asistente con escenarios reales de tu equipo, medimos la precisión de las respuestas y hacemos ajustes hasta alcanzar el nivel de calidad requerido.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <h3>Despliegue, adopción y evolución</h3>
+          <p>Implementamos el asistente en los canales elegidos, capacitamos a tu equipo para sacarle el máximo provecho y definimos un ciclo de mejora continua.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>¿Mis datos están seguros? ¿La IA aprende de mi empresa para entrenar modelos globales?</h3>
+        <p>No. Utilizamos las APIs de OpenAI y Anthropic con políticas de no entrenamiento: tus datos no se usan para mejorar los modelos globales. Además, podemos implementar el sistema en servidores privados si requieres máxima confidencialidad.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Puede el asistente ejecutar acciones o solo responder preguntas?</h3>
+        <p>Puede hacer ambas cosas. Con la arquitectura adecuada (agentes de IA + herramientas), el asistente puede crear tareas en Jira, actualizar registros en Salesforce, enviar correos, generar facturas y mucho más — todo activado por instrucciones en lenguaje natural.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Funciona en español colombiano y con jerga de mi industria?</h3>
+        <p>Sí. Parte del proceso de configuración incluye ajustar el tono, vocabulario y referencias culturales específicas de Colombia y de tu sector. El asistente hablará como alguien de tu equipo, no como un robot corporativo.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Qué sucede cuando mi empresa cambia información (precios, productos, procesos)?</h3>
+        <p>Diseñamos el sistema para actualizaciones sencillas. En la mayoría de casos, actualizar la base de conocimiento es tan simple como editar un documento o actualizar una hoja de cálculo. Los cambios se reflejan en el asistente en minutos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:1rem;">Diseñemos juntos tu asistente de IA</h2>
+  <p style="color:var(--text-muted); max-width:500px; margin:0 auto 2rem;">Cada empresa necesita algo diferente. En una llamada de 30 minutos identificamos qué procesos tiene más sentido automatizar y cuánto ahorraría tu equipo.</p>
+  <a href="https://wa.me/573212674754?text=Hola,%20quiero%20explorar%20un%20asistente%20de%20IA%20personalizado%20para%20mi%20empresa" class="btn-wa">Agendar llamada de exploración →</a>
+</section>
+
+<footer style="background:#0D0D14;border-top:1px solid rgba(255,255,255,0.06);padding:2rem 5%;text-align:center;">
+  <p style="font-size:0.78rem;color:#8A8D99;">© 2025 AI Company CO · <a href="/politica-de-privacidad/" style="color:#9B5FFF;">Privacidad</a> · <a href="/terminos-y-condiciones/" style="color:#9B5FFF;">Términos</a> · <a href="/tratamiento-de-datos/" style="color:#9B5FFF;">Tratamiento de datos</a></p>
+</footer>
+<script src="../../wa-widget.js"></script>
+</body>
+</html>

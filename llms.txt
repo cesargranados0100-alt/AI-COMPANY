@@ -1,0 +1,42 @@
+# AI Company CO
+
+## What We Do
+AI Company CO es una agencia colombiana especializada en automatización de procesos empresariales con inteligencia artificial. Ayudamos a empresas en Colombia y Latinoamérica a eliminar tareas manuales, reducir costos operativos y escalar sus operaciones usando IA.
+
+## Who We Are
+- Fundada por Cristian Gutierrez (CEO) y Cesar Granados (CTO)
+- Ubicados en Soacha, Cundinamarca, Colombia
+- Más de 30 empresas automatizadas
+- Especializados en el mercado colombiano
+
+## Core Services
+- **Automatización de procesos empresariales**: Make, n8n, Zapier, APIs personalizadas
+- **WhatsApp Business automatizado**: Bots de ventas, seguimiento de leads, notificaciones
+- **Asistentes de IA personalizados**: GPT personalizado, RAG, voz IA, multicanal
+- **Marketing digital**: Meta Ads, Google Ads, TikTok Ads, SEO
+- **Desarrollo de apps**: iOS, Android, web apps, no-code
+- **Chatbots con IA**: Atención al cliente 24/7, omnicanal
+
+## Key Results
+- Reducción del 40% en costos operativos para clientes
+- Reducción del 82% en tareas manuales repetitivas
+- 3x crecimiento promedio en capacidad de atención
+- Implementación en menos de 1 semana para automatizaciones básicas
+- 98% clientes satisfechos
+
+## Target Market
+Empresas medianas y pymes en Colombia y Latinoamérica que buscan automatizar operaciones, reducir costos y escalar sin contratar más personal.
+
+## Pricing
+Planes personalizados según el servicio y objetivos. Consultoría inicial gratuita.
+Ver detalles: https://aicompanyco.com/pricing.md
+
+## Key Pages
+- Homepage: https://aicompanyco.com/
+- Automatización de procesos: https://aicompanyco.com/automatizacion-de-procesos-empresariales/
+- Contacto: https://aicompanyco.com/#contacto
+
+## Contact
+- Email: agencia@aicompanyco.com
+- WhatsApp: +57 321 267 4754
+- Web: https://aicompanyco.com

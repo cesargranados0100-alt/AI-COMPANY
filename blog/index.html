@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog de Automatización e IA para Empresas | AI Company CO</title>
+<meta name="description" content="Guías prácticas, tutoriales y casos de uso de automatización empresarial e inteligencia artificial para empresas colombianas. Publicado por AI Company CO." />
+<link rel="canonical" href="https://aicompanyco.com/blog/" />
+<link rel="icon" type="image/png" href="../logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-dark: #5A00B8;
+    --purple-light: #9B5FFF;
+    --bg: #0D0D14;
+    --bg2: #12121C;
+    --text: #E8E8F0;
+    --text-muted: #8A8D99;
+    --border: rgba(90,0,184,0.18);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.7; }
+  h1,h2,h3 { font-family: 'Orbitron', monospace; }
+  a { color: var(--purple-light); text-decoration: none; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 5%; }
+  .hero { padding: 9rem 5% 4rem; text-align: center; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(90,0,184,0.22) 0%, transparent 70%); }
+  .badge { display: inline-block; background: rgba(90,0,184,0.25); border: 1px solid var(--border); color: var(--purple-light); padding: 0.3rem 1rem; border-radius: 100px; font-size: 0.78rem; letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+  .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
+  .hero p { color: var(--text-muted); max-width: 580px; margin: 0 auto; }
+  .posts-section { padding: 4rem 5%; }
+  .posts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  .post-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
+  .post-card:hover { border-color: var(--purple-dark); }
+  .post-card-body { padding: 1.8rem; }
+  .post-category { font-size: 0.75rem; color: var(--purple-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.7rem; display: block; }
+  .post-card h2 { font-size: 1rem; line-height: 1.4; margin-bottom: 0.8rem; color: #fff; }
+  .post-card p { font-size: 0.87rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+  .post-meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); }
+  .read-link { color: var(--purple-light); font-size: 0.85rem; font-weight: 500; }
+  .read-link:hover { color: #fff; }
+  .post-thumb { height: 140px; background: linear-gradient(135deg, rgba(90,0,184,0.4) 0%, rgba(155,95,255,0.15) 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .cta-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 5%; text-align: center; }
+  .btn-wa { display: inline-block; background: #25D366; color: #fff; padding: 0.85rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 1rem; }
+  .breadcrumb { padding: 6rem 5% 0; font-size: 0.82rem; color: var(--text-muted); }
+  .breadcrumb a { color: var(--text-muted); }
+  .breadcrumb a:hover { color: var(--purple-light); }
+  .highlight { color: var(--purple-light); }
+  @media (max-width: 768px) {
+    nav span { display: none; }
+    .hero { padding: 6rem 5% 3rem; }
+    .posts-section { padding: 2.5rem 5%; }
+    .posts-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 3rem 5%; }
+    .breadcrumb { padding: 5rem 5% 0; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 1.5rem; }
+    .btn-wa { display: block; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:rgba(13,13,20,0.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(90,0,184,0.18);">
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <img src="../logo.png" alt="AI Company CO" style="width:40px;height:40px;object-fit:contain;mix-blend-mode:screen;">
+    <span style="font-family:'Orbitron',monospace;font-size:0.9rem;font-weight:700;color:#fff;letter-spacing:0.1em;">AI COMPANY CO</span>
+  </a>
+  <a href="../index.html#contacto" style="background:#5A00B8;color:#fff;padding:0.6rem 1.4rem;border-radius:4px;text-decoration:none;font-size:0.82rem;font-weight:500;">Hablemos →</a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Inicio</a> / Blog
+</div>
+
+<section class="hero">
+  <div class="badge">BLOG</div>
+  <h1>Automatización e IA<br><span class="highlight">para empresas colombianas</span></h1>
+  <p>Guías prácticas, tutoriales y casos de uso reales. Todo lo que necesitas saber para digitalizar y automatizar tu empresa con inteligencia artificial.</p>
+</section>
+
+<section class="posts-section">
+  <div class="container">
+    <div class="posts-grid">
+
+      <article class="post-card">
+        <div class="post-thumb">📲</div>
+        <div class="post-card-body">
+          <span class="post-category">Automatización · WhatsApp</span>
+          <h2><a href="como-automatizar-whatsapp-business-colombia/" style="color:#fff;">Cómo Automatizar WhatsApp Business para tu Empresa en Colombia (Guía 2025)</a></h2>
+          <p>Paso a paso para implementar respuestas automáticas, bots de ventas y flujos de atención en tu número de WhatsApp Business — usando la API oficial y herramientas como Make y n8n.</p>
+          <div class="post-meta">
+            <span>Mayo 2, 2025 · 8 min</span>
+            <a href="como-automatizar-whatsapp-business-colombia/" class="read-link">Leer guía →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-thumb">⚙️</div>
+        <div class="post-card-body">
+          <span class="post-category">Automatización · n8n</span>
+          <h2><a href="que-es-n8n-automatizacion-colombia/" style="color:#fff;">Qué es n8n y Cómo Usarlo para Automatizar tu Empresa en Colombia (2025)</a></h2>
+          <p>n8n es la herramienta de automatización open-source más potente del mercado. Esta guía explica qué es, cómo funciona, cuánto cuesta y cómo implementarlo en empresas colombianas.</p>
+          <div class="post-meta">
+            <span>Mayo 2, 2025 · 9 min</span>
+            <a href="que-es-n8n-automatizacion-colombia/" class="read-link">Leer guía →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-thumb">🧾</div>
+        <div class="post-card-body">
+          <span class="post-category">Automatización · Facturación</span>
+          <h2><a href="facturacion-electronica-automatica-colombia/" style="color:#fff;">Facturación Electrónica Automática en Colombia: Guía para Pymes 2025</a></h2>
+          <p>Todo lo que tu pyme necesita saber sobre facturación electrónica DIAN, las herramientas para automatizarla y cómo integrarla con tu sistema de ventas para eliminar la carga manual.</p>
+          <div class="post-meta">
+            <span>Mayo 2, 2025 · 10 min</span>
+            <a href="facturacion-electronica-automatica-colombia/" class="read-link">Leer guía →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2 style="font-size:clamp(1.2rem,2.5vw,1.8rem); margin-bottom:1rem;">¿Listo para automatizar tu empresa?</h2>
+    <p style="color:var(--text-muted); max-width:500px; margin:0 auto 2rem;">Convertimos este conocimiento en implementaciones reales. Agenda una consultoría gratuita de 30 minutos y hablemos sobre tu caso específico.</p>
+    <a href="https://wa.me/573212674754?text=Hola,%20leí%20el%20blog%20de%20AI%20Company%20CO%20y%20quiero%20una%20asesor%C3%ADa%20gratuita" class="btn-wa">Agendar consultoría gratuita →</a>
+  </div>
+</section>
+
+<footer style="background:#0D0D14;border-top:1px solid rgba(255,255,255,0.06);padding:2rem 5%;text-align:center;">
+  <p style="font-size:0.78rem;color:#8A8D99;">© 2025 AI Company CO · <a href="../politica-de-privacidad/" style="color:#9B5FFF;">Privacidad</a> · <a href="../terminos-y-condiciones/" style="color:#9B5FFF;">Términos</a> · <a href="../tratamiento-de-datos/" style="color:#9B5FFF;">Tratamiento de datos</a></p>
+</footer>
+<script src="../wa-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chatbot con IA para Empresas en Colombia | AI Company CO</title>
+<meta name="description" content="Implementamos chatbots con inteligencia artificial para empresas colombianas. Atiende clientes en WhatsApp, web e Instagram con GPT-4 y tecnología RAG. Precios desde COP $3M." />
+<link rel="canonical" href="https://aicompanyco.com/servicios/chatbot-ia/" />
+<link rel="icon" type="image/png" href="../../logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Chatbot con IA para Empresas",
+  "description": "Desarrollo e implementación de chatbots con inteligencia artificial para empresas colombianas. Web, WhatsApp e Instagram con GPT-4 y RAG.",
+  "provider": {
+    "@type": "Organization",
+    "name": "AI Company CO",
+    "url": "https://aicompanyco.com",
+    "email": "agencia@aicompanyco.com"
+  },
+  "areaServed": "CO",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "COP",
+    "price": "3000000"
+  }
+}
+</script>
+<style>
+  :root {
+    --purple-dark: #5A00B8;
+    --purple-light: #9B5FFF;
+    --bg: #0D0D14;
+    --bg2: #12121C;
+    --text: #E8E8F0;
+    --text-muted: #8A8D99;
+    --border: rgba(90,0,184,0.18);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.7; }
+  h1,h2,h3 { font-family: 'Orbitron', monospace; }
+  a { color: var(--purple-light); }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 5%; }
+  .hero { padding: 9rem 5% 5rem; text-align: center; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(90,0,184,0.22) 0%, transparent 70%); }
+  .badge { display: inline-block; background: rgba(90,0,184,0.25); border: 1px solid var(--border); color: var(--purple-light); padding: 0.3rem 1rem; border-radius: 100px; font-size: 0.78rem; letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+  .hero h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 2rem; }
+  .btn-wa { display: inline-block; background: #25D366; color: #fff; padding: 0.85rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 1rem; }
+  section { padding: 4rem 5%; }
+  .section-title { font-size: clamp(1.2rem, 2.5vw, 1.7rem); margin-bottom: 0.8rem; color: #fff; }
+  .section-sub { color: var(--text-muted); margin-bottom: 2.5rem; max-width: 640px; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; }
+  .card-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .card h3 { font-size: 1rem; margin-bottom: 0.6rem; color: var(--purple-light); }
+  .card p { font-size: 0.88rem; color: var(--text-muted); }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .compare-table th { background: var(--purple-dark); color: #fff; padding: 0.9rem 1.2rem; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 500; }
+  .compare-table td { padding: 0.85rem 1.2rem; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+  .compare-table tr:hover td { background: rgba(155,95,255,0.05); }
+  .compare-table .yes { color: #4ade80; }
+  .compare-table .no { color: #f87171; }
+  .steps { counter-reset: step; display: flex; flex-direction: column; gap: 1.5rem; }
+  .step { display: flex; gap: 1.2rem; align-items: flex-start; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; }
+  .step-num { background: var(--purple-dark); color: #fff; font-family: 'Orbitron', monospace; font-weight: 700; font-size: 1.1rem; min-width: 2.4rem; height: 2.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step h3 { font-size: 1rem; color: var(--purple-light); margin-bottom: 0.4rem; }
+  .step p { font-size: 0.88rem; color: var(--text-muted); }
+  .price-box { background: var(--bg2); border: 1px solid var(--purple-dark); border-radius: 12px; padding: 2.5rem; text-align: center; max-width: 480px; margin: 0 auto; }
+  .price-box .price { font-family: 'Orbitron', monospace; font-size: 2.2rem; color: var(--purple-light); margin: 0.8rem 0; }
+  .price-box ul { list-style: none; text-align: left; margin: 1.2rem 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .price-box li::before { content: "✓ "; color: var(--purple-light); }
+  .price-box li { font-size: 0.9rem; color: var(--text-muted); }
+  .faq { display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.4rem; }
+  .faq-item h3 { font-size: 0.95rem; color: #fff; margin-bottom: 0.5rem; font-family: 'DM Sans', sans-serif; font-weight: 500; }
+  .faq-item p { font-size: 0.87rem; color: var(--text-muted); }
+  .cta-section { background: radial-gradient(ellipse 80% 100% at 50% 50%, rgba(90,0,184,0.18) 0%, transparent 70%); text-align: center; padding: 5rem 5%; }
+  .breadcrumb { padding: 6rem 5% 0; font-size: 0.82rem; color: var(--text-muted); }
+  .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--purple-light); }
+  .tools-list { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .tool-badge { background: rgba(155,95,255,0.12); border: 1px solid rgba(155,95,255,0.3); color: var(--purple-light); padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.82rem; }
+  .highlight { color: var(--purple-light); }
+  .channels { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+  .channel { display: flex; align-items: center; gap: 0.8rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; }
+  .channel-icon { font-size: 1.6rem; }
+  @media (max-width: 768px) {
+    nav span { display: none; }
+    .hero { padding: 6rem 5% 3rem; }
+    .hero p { font-size: 0.95rem; }
+    section { padding: 2.5rem 5%; }
+    .card-grid { grid-template-columns: 1fr; }
+    .price-box { padding: 1.8rem; }
+    .price-box .price { font-size: 1.8rem; }
+    .cta-section { padding: 3rem 5%; }
+    .breadcrumb { padding: 5rem 5% 0; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 1.5rem; }
+    .btn-wa, .btn-primary { display: block; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:rgba(13,13,20,0.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(90,0,184,0.18);">
+  <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <img src="../../logo.png" alt="AI Company CO" style="width:40px;height:40px;object-fit:contain;mix-blend-mode:screen;">
+    <span style="font-family:'Orbitron',monospace;font-size:0.9rem;font-weight:700;color:#fff;letter-spacing:0.1em;">AI COMPANY CO</span>
+  </a>
+  <a href="/#contacto" style="background:#5A00B8;color:#fff;padding:0.6rem 1.4rem;border-radius:4px;text-decoration:none;font-size:0.82rem;font-weight:500;">Hablemos →</a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Inicio</a> / <a href="/servicios/">Servicios</a> / Chatbot con IA
+</div>
+
+<section class="hero">
+  <div class="badge">CHATBOT CON INTELIGENCIA ARTIFICIAL</div>
+  <h1>El chatbot que <span class="highlight">realmente entiende</span><br>a tus clientes</h1>
+  <p>No un árbol de decisiones disfrazado. Un chatbot con IA entrenado con el conocimiento de tu empresa que responde como tu mejor asesor — en WhatsApp, web e Instagram.</p>
+  <a href="https://wa.me/573212674754?text=Hola,%20quiero%20un%20chatbot%20con%20IA%20para%20mi%20empresa" class="btn-wa">Quiero mi chatbot con IA →</a>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Chatbot tradicional vs. Chatbot con IA</h2>
+    <p class="section-sub">No todos los bots son iguales. La diferencia entre un chatbot de flujos y uno con IA real es abismal.</p>
+    <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>Chatbot tradicional</th>
+            <th>Chatbot con IA (el nuestro)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Entiende preguntas abiertas</td><td class="no">✗ No</td><td class="yes">✓ Sí</td></tr>
+          <tr><td>Aprende de tu documentación</td><td class="no">✗ No</td><td class="yes">✓ Sí (RAG)</td></tr>
+          <tr><td>Respuestas naturales y contextuales</td><td class="no">✗ No</td><td class="yes">✓ Sí</td></tr>
+          <tr><td>Maneja preguntas fuera de script</td><td class="no">✗ No</td><td class="yes">✓ Sí</td></tr>
+          <tr><td>Recuerda el contexto de la conversación</td><td class="no">✗ No</td><td class="yes">✓ Sí</td></tr>
+          <tr><td>Se actualiza con nueva información</td><td class="no">Programación manual</td><td class="yes">✓ Actualización de base de conocimiento</td></tr>
+          <tr><td>Maneja múltiples idiomas</td><td class="no">✗ No</td><td class="yes">✓ Español, inglés y más</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">Canales donde lo implementamos</h2>
+    <p class="section-sub">Un solo cerebro de IA, múltiples canales para atender a tus clientes donde ya están.</p>
+    <div class="channels">
+      <div class="channel"><div class="channel-icon">💬</div><div><strong>WhatsApp Business</strong><p style="font-size:0.8rem;color:var(--text-muted);margin:0;">API oficial</p></div></div>
+      <div class="channel"><div class="channel-icon">🌐</div><div><strong>Chat en tu web</strong><p style="font-size:0.8rem;color:var(--text-muted);margin:0;">Widget integrado</p></div></div>
+      <div class="channel"><div class="channel-icon">📸</div><div><strong>Instagram DM</strong><p style="font-size:0.8rem;color:var(--text-muted);margin:0;">Mensajes directos</p></div></div>
+      <div class="channel"><div class="channel-icon">📘</div><div><strong>Facebook Messenger</strong><p style="font-size:0.8rem;color:var(--text-muted);margin:0;">Página de negocio</p></div></div>
+      <div class="channel"><div class="channel-icon">📧</div><div><strong>Email automatizado</strong><p style="font-size:0.8rem;color:var(--text-muted);margin:0;">Respuestas IA</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Casos de uso para tu empresa</h2>
+    <p class="section-sub">Implementaciones reales con resultados medibles en empresas colombianas.</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🏥</div>
+        <h3>Clínicas y salud</h3>
+        <p>Agendamiento de citas, preparación de pacientes, recordatorios de medicamentos, respuesta a preguntas médicas frecuentes con derivación al especialista.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <h3>Inmobiliarias</h3>
+        <p>Presentación de propiedades, filtrado de compradores por presupuesto, agendamiento de visitas, respuestas sobre crédito hipotecario y documentos requeridos.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3>Educación</h3>
+        <p>Información sobre programas, proceso de admisión, costos y becas disponibles. Acompañamiento del proceso de inscripción de principio a fin.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛍️</div>
+        <h3>E-commerce y retail</h3>
+        <p>Estado de pedidos en tiempo real, devoluciones, recomendaciones de productos personalizadas y soporte post-venta sin intervención humana.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <h3>Servicios profesionales</h3>
+        <p>Firmas de abogados, consultorios y agencias: preguntas frecuentes, consultas de primer contacto y calificación de clientes potenciales.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <h3>Fintech y financiero</h3>
+        <p>Consulta de saldos, información de productos financieros, onboarding de nuevos clientes y soporte transaccional con altos estándares de seguridad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">Tecnologías que usamos</h2>
+    <p class="section-sub">Construido sobre los modelos de IA más avanzados y arquitecturas de recuperación de información de última generación.</p>
+    <div class="tools-list">
+      <span class="tool-badge">GPT-4o (OpenAI)</span>
+      <span class="tool-badge">RAG (Retrieval-Augmented Generation)</span>
+      <span class="tool-badge">LangChain</span>
+      <span class="tool-badge">Pinecone / Weaviate</span>
+      <span class="tool-badge">WhatsApp Business API</span>
+      <span class="tool-badge">n8n</span>
+      <span class="tool-badge">Make</span>
+      <span class="tool-badge">Botpress</span>
+      <span class="tool-badge">Typebot</span>
+      <span class="tool-badge">Supabase</span>
+    </div>
+    <div style="margin-top:2rem; background:rgba(155,95,255,0.08); border:1px solid rgba(155,95,255,0.2); border-radius:8px; padding:1.4rem;">
+      <h3 style="font-size:0.95rem; color:var(--purple-light); margin-bottom:0.5rem;">¿Qué es la tecnología RAG?</h3>
+      <p style="font-size:0.87rem; color:var(--text-muted);">RAG (Retrieval-Augmented Generation) permite al chatbot buscar información actualizada en documentos de tu empresa — manuales, catálogos, políticas, precios — antes de responder. El resultado: respuestas precisas sobre tu negocio específico, no respuestas genéricas de internet.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Proceso de implementación</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>Levantamiento de información</h3>
+          <p>Recopilamos toda la documentación de tu empresa: FAQs, catálogos, manuales, políticas, procesos y tono de comunicación. Esta información entrena a tu chatbot.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>Diseño de personalidad y flujos</h3>
+          <p>Definimos la personalidad del asistente, los flujos críticos (como cierre de venta o escalamiento a humano) y los límites de lo que puede y no puede responder.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>Desarrollo e integración</h3>
+          <p>Construimos el chatbot, lo entrenamos con tu base de conocimiento, lo integramos en los canales requeridos y lo conectamos con tus sistemas internos.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h3>Pruebas y ajuste fino</h3>
+          <p>Probamos cientos de escenarios reales, ajustamos respuestas incorrectas, optimizamos el tono y validamos los flujos de escalamiento a agente humano.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <h3>Lanzamiento y mejora continua</h3>
+          <p>Lanzamos con monitoreo activo. Revisamos conversaciones semanalmente para detectar fallos y actualizar la base de conocimiento cuando tu empresa cambie.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;">Inversión</h2>
+    <div class="price-box">
+      <p style="color:var(--text-muted); font-size:0.85rem;">Desde</p>
+      <div class="price">COP $3.000.000</div>
+      <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1.2rem;">Implementación única según canales y complejidad</p>
+      <ul>
+        <li>Chatbot IA con base de conocimiento personalizada</li>
+        <li>Integración en 1 canal (WhatsApp o Web)</li>
+        <li>Hasta 50 documentos en base de conocimiento</li>
+        <li>Panel de conversaciones y métricas</li>
+        <li>Escalamiento a agente humano</li>
+        <li>Capacitación y 30 días soporte</li>
+      </ul>
+      <a href="https://wa.me/573212674754?text=Hola,%20quiero%20cotizar%20un%20chatbot%20con%20IA%20para%20mi%20empresa" class="btn-wa" style="width:100%; display:block; text-align:center; margin-top:1.2rem;">Cotizar mi chatbot →</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>¿En cuánto tiempo puede el chatbot aprender sobre mi empresa?</h3>
+        <p>El entrenamiento inicial toma entre 3 y 7 días dependiendo del volumen de documentación. Luego, actualizar la base de conocimiento con nueva información toma horas, no días.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Qué pasa si el chatbot no sabe responder algo?</h3>
+        <p>Configuramos respuestas de fallback naturales y protocolos de escalamiento. Cuando el bot detecta que no puede resolver la consulta, transfiere al agente humano con todo el contexto de la conversación.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿El chatbot puede tomar acciones como agendar citas o hacer pedidos?</h3>
+        <p>Sí. Más allá de responder preguntas, podemos programar el chatbot para consultar disponibilidad en tu calendario, crear registros en tu CRM, iniciar órdenes de compra y ejecutar cualquier acción a través de APIs.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Tiene costos operativos mensuales?</h3>
+        <p>Sí, hay costos variables según el volumen de conversaciones (tokens de la API de OpenAI) y los costos de la plataforma de mensajería. Para la mayoría de empresas medianas esto oscila entre COP $200.000 y $800.000 mensuales. Te damos una estimación precisa antes de empezar.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Puedo ver todas las conversaciones del chatbot?</h3>
+        <p>Sí. Tienes acceso total a todas las conversaciones en un panel centralizado. Puedes filtrar, buscar, etiquetar y exportar. También configuramos alertas para conversaciones que requieren revisión.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:1rem;">¿Tu empresa necesita un chatbot que realmente funcione?</h2>
+  <p style="color:var(--text-muted); max-width:500px; margin:0 auto 2rem;">Conversemos sobre tu caso. Te mostramos una demo con información real de tu empresa para que veas el potencial antes de comprometerte.</p>
+  <a href="https://wa.me/573212674754?text=Hola,%20quiero%20una%20demo%20del%20chatbot%20con%20IA%20para%20mi%20empresa" class="btn-wa">Ver demo personalizada →</a>
+</section>
+
+<footer style="background:#0D0D14;border-top:1px solid rgba(255,255,255,0.06);padding:2rem 5%;text-align:center;">
+  <p style="font-size:0.78rem;color:#8A8D99;">© 2025 AI Company CO · <a href="/politica-de-privacidad/" style="color:#9B5FFF;">Privacidad</a> · <a href="/terminos-y-condiciones/" style="color:#9B5FFF;">Términos</a> · <a href="/tratamiento-de-datos/" style="color:#9B5FFF;">Tratamiento de datos</a></p>
+</footer>
+<script src="../../wa-widget.js"></script>
+</body>
+</html>
