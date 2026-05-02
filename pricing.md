@@ -5,72 +5,53 @@ Web: https://aicompanyco.com | Email: agencia@aicompanyco.com | WhatsApp: +57 32
 
 ---
 
-## Automatización Empresarial
+## Política de precios
 
-### Plan Básico
-- Precio: Desde COP $2.000.000/mes
-- Incluye: 1-2 flujos automatizados (ej. WhatsApp + facturación)
-- Herramientas: Make o n8n
-- Soporte: Email + 1 sesión de revisión mensual
-- Implementación: 3-7 días hábiles
+Cada proyecto es diferente. Antes de cotizar, necesitamos entender:
+- El tamaño y sector de tu empresa
+- Los procesos que quieres automatizar o mejorar
+- Los sistemas y herramientas que ya usas
+- Tus objetivos y métricas de éxito
 
-### Plan Profesional
-- Precio: Desde COP $5.000.000/mes
-- Incluye: Hasta 5 flujos automatizados + integración CRM
+Por eso todos nuestros precios son bajo cotización personalizada.
+
+---
+
+## Servicios disponibles
+
+### Automatización Empresarial
+- Flujos automáticos: WhatsApp, facturación, CRM, reportes
 - Herramientas: Make, n8n, Zapier, WhatsApp Business API
-- Soporte: WhatsApp + videollamadas semanales
-- Implementación: 1-2 semanas
+- Precio: Cotización según alcance — contactar agencia@aicompanyco.com
 
-### Plan Empresarial
-- Precio: Personalizado — contactar agencia@aicompanyco.com
-- Incluye: Flujos ilimitados + asistente IA personalizado + apps
-- Herramientas: Todas las anteriores + APIs custom + GPT personalizado
-- Soporte: Dedicado 24/5
-- Implementación: 2-4 semanas
+### Chatbot con IA
+- Bots con IA para WhatsApp, web e Instagram
+- Precio: Cotización según canales y complejidad
 
----
+### Asistente IA Personalizado
+- Asistentes con conocimiento específico de tu empresa
+- Precio: Cotización según necesidades
 
-## Marketing Digital
+### Marketing Digital
+- Meta Ads, Google Ads, TikTok Ads, SEO, gestión de redes
+- Precio: Cotización según canales y objetivos
 
-### Plan Starter
-- Precio: Desde COP $3.000.000/mes
-- Incluye: Gestión de 1 plataforma (Meta Ads o Google Ads), 4 piezas/mes
-- Presupuesto de pauta: No incluido (mínimo recomendado COP $2.000.000/mes)
+### Páginas Web y E-commerce
+- Sitios corporativos, landing pages, tiendas en línea
+- Precio: Cotización según tipo de proyecto
 
-### Plan Growth
-- Precio: Desde COP $6.000.000/mes
-- Incluye: Meta Ads + Google Ads + gestión redes sociales + SEO básico
-- Presupuesto de pauta: No incluido (mínimo recomendado COP $4.000.000/mes)
-
-### Plan Full
-- Precio: Personalizado
-- Incluye: Todo el Plan Growth + TikTok Ads + email marketing + reportes avanzados
+### Apps Empresariales
+- Apps móviles y web a medida
+- Precio: Cotización según funcionalidades y plataformas
 
 ---
 
-## Desarrollo de Apps y Páginas Web
+## Consultoría inicial
 
-### Landing Page
-- Precio: Desde COP $3.500.000 (pago único)
-- Incluye: Diseño + desarrollo + SEO básico + 1 mes soporte
-
-### Sitio Web Corporativo
-- Precio: Desde COP $7.000.000 (pago único)
-- Incluye: Hasta 10 páginas + blog + SEO + 3 meses soporte
-
-### App Empresarial
-- Precio: Desde COP $15.000.000 (pago único)
-- Incluye: iOS + Android o Web App + panel de administración
-- Tiempo: 6-12 semanas
+- Consultoría inicial: **Gratuita** (30 minutos)
+- WhatsApp: +57 321 267 4754
+- Email: agencia@aicompanyco.com
 
 ---
 
-## Consultoría
-- Consultoría inicial: Gratuita (30 min)
-- Consultoría estratégica: COP $500.000/hora
-- Diagnóstico completo: COP $1.500.000 (incluye informe y roadmap)
-
----
-
-*Precios en pesos colombianos (COP). Los planes incluyen IVA.
-Última actualización: Mayo 2025.*
+*Última actualización: Mayo 2025.*
