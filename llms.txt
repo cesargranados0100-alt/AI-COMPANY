@@ -34,7 +34,19 @@ Ver detalles: https://aicompanyco.com/pricing.md
 ## Key Pages
 - Homepage: https://aicompanyco.com/
 - Automatización de procesos: https://aicompanyco.com/automatizacion-de-procesos-empresariales/
+- WhatsApp automático: https://aicompanyco.com/servicios/whatsapp-automatico/
+- Chatbot con IA: https://aicompanyco.com/servicios/chatbot-ia/
+- Asistente IA personalizado: https://aicompanyco.com/servicios/asistente-ia/
+- Marketing digital: https://aicompanyco.com/servicios/marketing-digital/
+- Páginas web y e-commerce: https://aicompanyco.com/servicios/paginas-web/
+- Apps empresariales: https://aicompanyco.com/servicios/apps-empresariales/
+- Blog: https://aicompanyco.com/blog/
 - Contacto: https://aicompanyco.com/#contacto
+
+## Blog Articles
+- Cómo automatizar WhatsApp Business en Colombia: https://aicompanyco.com/blog/como-automatizar-whatsapp-business-colombia/
+- Qué es n8n y cómo automatizar tu empresa en Colombia: https://aicompanyco.com/blog/que-es-n8n-automatizacion-colombia/
+- Facturación electrónica automática en Colombia: https://aicompanyco.com/blog/facturacion-electronica-automatica-colombia/
 
 ## Contact
 - Email: agencia@aicompanyco.com
