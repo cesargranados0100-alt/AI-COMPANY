@@ -226,10 +226,11 @@ nav.scrolled {
 ══════════════════════════════════════════════ */
 #hero {
   min-height: 100vh;
-  display: flex; align-items: center;
+  display: flex; align-items: center; justify-content: center;
   padding: 7rem 5% 5rem;
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 /* Animated grid bg */
@@ -266,7 +267,7 @@ nav.scrolled {
 .hero-content {
   position: relative; z-index: 2;
   width: 100%;
-  max-width: 100%;
+  max-width: 860px;
 }
 
 .hero-badge {
@@ -294,10 +295,10 @@ nav.scrolled {
 
 .hero-h1 {
   font-family: var(--font-h);
-  font-size: clamp(2.8rem, 7vw, 6.5rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
   color: var(--white);
   margin-bottom: 1.5rem;
   animation: fadeUp 0.7s 0.1s ease both;
@@ -309,16 +310,16 @@ nav.scrolled {
 .hero-h1 .accent2 { color: var(--purple-xl); }
 
 .hero-p {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 300;
   color: var(--gray-l);
-  max-width: 700px;
-  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
   animation: fadeUp 0.7s 0.2s ease both;
 }
 
 .hero-btns {
-  display: flex; gap: 1rem; flex-wrap: wrap;
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
   animation: fadeUp 0.7s 0.3s ease both;
 }
 
@@ -1158,7 +1159,7 @@ footer {
 
   #hero { padding: 6rem 5% 5rem; min-height: auto; }
   .hero-content { max-width: 100%; }
-  .hero-h1 { font-size: clamp(2rem, 8vw, 3.2rem); }
+  .hero-h1 { font-size: clamp(1.8rem, 6vw, 2.8rem); }
   .hero-p { font-size: 0.95rem; }
   .hero-stats { gap: 1.5rem; flex-wrap: wrap; padding-top: 1.8rem; margin-top: 2.5rem; }
   .hero-logo-large { display: none; }
