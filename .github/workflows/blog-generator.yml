@@ -1,0 +1,45 @@
+name: Auto Blog Generator
+
+on:
+  schedule:
+    # Every Monday at 1:00 PM UTC = 8:00 AM Colombia (UTC-5)
+    - cron: '0 13 * * 1'
+  workflow_dispatch:
+    # Allow manual trigger from GitHub Actions tab
+
+jobs:
+  generate-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          cd scripts
+          npm init -y
+          npm install @anthropic-ai/sdk
+
+      - name: Generate blog post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-blog.js
+
+      - name: Commit and push new post
+        run: |
+          git config user.name "AI Company Blog Bot"
+          git config user.email "cesargranados0100@gmail.com"
+          git add blog/ sitemap-seo.xml
+          # Only commit if there are changes
+          git diff --staged --quiet || git commit -m "blog: auto-publish new post [skip ci]"
+          git push
