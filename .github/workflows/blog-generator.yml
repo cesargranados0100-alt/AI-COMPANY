@@ -2,8 +2,9 @@ name: Auto Blog Generator
 
 on:
   schedule:
-    # Every Monday at 1:00 PM UTC = 8:00 AM Colombia (UTC-5)
+    # Every Monday and Thursday at 1:00 PM UTC = 8:00 AM Colombia (UTC-5)
     - cron: '0 13 * * 1'
+    - cron: '0 13 * * 4'
   workflow_dispatch:
     # Allow manual trigger from GitHub Actions tab
 
