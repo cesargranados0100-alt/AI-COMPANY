@@ -73,6 +73,47 @@ function monthName(dateStr) {
   return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
+const SERVICIO_EMOJI = {
+  'chatbot-ia': '🤖',
+  'whatsapp-automatico': '💬',
+  'paginas-web': '🌐',
+  'marketing-digital': '📈',
+  'apps-empresariales': '📱',
+  'asistente-ia': '⚡',
+};
+
+function updateBlogIndex(topic, dateStr) {
+  const indexPath = path.join(BLOG_DIR, 'index.html');
+  if (!fs.existsSync(indexPath)) return;
+
+  let html = fs.readFileSync(indexPath, 'utf8');
+
+  // Don't add duplicate
+  if (html.includes(`href="${topic.slug}/"`)) return;
+
+  const emoji = SERVICIO_EMOJI[topic.servicio] || '📄';
+  const fecha = monthName(dateStr);
+
+  const card = `
+      <article class="post-card">
+        <div class="post-thumb">${emoji}</div>
+        <div class="post-card-body">
+          <span class="post-category">${topic.categoria}</span>
+          <h2><a href="${topic.slug}/" style="color:#fff;">${topic.titulo}</a></h2>
+          <p>Guía práctica sobre ${topic.keyword} para empresas colombianas. Publicado por AI Company CO.</p>
+          <div class="post-meta">
+            <span>${fecha}</span>
+            <a href="${topic.slug}/" class="read-link">Leer guía →</a>
+          </div>
+        </div>
+      </article>`;
+
+  // Insert at the top of the posts grid
+  html = html.replace('<div class="posts-grid">', `<div class="posts-grid">${card}`);
+  fs.writeFileSync(indexPath, html, 'utf8');
+  console.log('Blog index updated');
+}
+
 // ─── sitemap updater ─────────────────────────────────────────────────────────
 
 function updateSitemap(slug, dateStr) {
@@ -243,6 +284,9 @@ async function main() {
   // update sitemap
   updateSitemap(topic.slug, dateStr);
   console.log('Sitemap updated');
+
+  // update blog index
+  updateBlogIndex(topic, dateStr);
 
   // print summary for CI log
   console.log(`\n✓ Published: ${topic.titulo}`);
