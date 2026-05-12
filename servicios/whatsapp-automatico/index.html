@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp Business Automatizado para Empresas en Colombia | AI Company CO</title>
+<meta name="description" content="Automatiza tu WhatsApp Business con bots de IA para ventas, soporte y recordatorios. Implementación profesional con WhatsApp Business API, Make y n8n en Colombia." />
+<link rel="canonical" href="https://aicompanyco.com/servicios/whatsapp-automatico/" />
+<link rel="icon" type="image/png" href="../../logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "WhatsApp Business Automatizado",
+  "description": "Automatización de WhatsApp Business con bots de IA para empresas colombianas. Incluye atención 24/7, ventas automatizadas y recordatorios.",
+  "provider": {
+    "@type": "Organization",
+    "name": "AI Company CO",
+    "url": "https://aicompanyco.com",
+    "email": "agencia@aicompanyco.com"
+  },
+  "areaServed": "CO",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "COP",
+    "price": "2000000",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": "2000000",
+      "priceCurrency": "COP"
+    }
+  }
+}
+</script>
+<style>
+  :root {
+    --purple-dark: #5A00B8;
+    --purple-light: #9B5FFF;
+    --bg: #0D0D14;
+    --bg2: #12121C;
+    --text: #E8E8F0;
+    --text-muted: #8A8D99;
+    --border: rgba(90,0,184,0.18);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.7; }
+  h1,h2,h3 { font-family: 'Orbitron', monospace; }
+  a { color: var(--purple-light); }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 5%; }
+  .hero { padding: 9rem 5% 5rem; text-align: center; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(90,0,184,0.22) 0%, transparent 70%); }
+  .badge { display: inline-block; background: rgba(90,0,184,0.25); border: 1px solid var(--border); color: var(--purple-light); padding: 0.3rem 1rem; border-radius: 100px; font-size: 0.78rem; letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+  .hero h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 2rem; }
+  .btn-primary { display: inline-block; background: var(--purple-dark); color: #fff; padding: 0.85rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 1rem; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--purple-light); color: #fff; }
+  .btn-wa { display: inline-block; background: #25D366; color: #fff; padding: 0.85rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 1rem; }
+  section { padding: 4rem 5%; }
+  .section-title { font-size: clamp(1.2rem, 2.5vw, 1.7rem); margin-bottom: 0.8rem; color: #fff; }
+  .section-sub { color: var(--text-muted); margin-bottom: 2.5rem; max-width: 640px; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; }
+  .card-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .card h3 { font-size: 1rem; margin-bottom: 0.6rem; color: var(--purple-light); }
+  .card p { font-size: 0.88rem; color: var(--text-muted); }
+  .steps { counter-reset: step; display: flex; flex-direction: column; gap: 1.5rem; }
+  .step { display: flex; gap: 1.2rem; align-items: flex-start; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; }
+  .step-num { background: var(--purple-dark); color: #fff; font-family: 'Orbitron', monospace; font-weight: 700; font-size: 1.1rem; min-width: 2.4rem; height: 2.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step h3 { font-size: 1rem; color: var(--purple-light); margin-bottom: 0.4rem; }
+  .step p { font-size: 0.88rem; color: var(--text-muted); }
+  .price-box { background: var(--bg2); border: 1px solid var(--purple-dark); border-radius: 12px; padding: 2.5rem; text-align: center; max-width: 480px; margin: 0 auto; }
+  .price-box .price { font-family: 'Orbitron', monospace; font-size: 2.2rem; color: var(--purple-light); margin: 0.8rem 0; }
+  .price-box ul { list-style: none; text-align: left; margin: 1.2rem 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .price-box li::before { content: "✓ "; color: var(--purple-light); }
+  .price-box li { font-size: 0.9rem; color: var(--text-muted); }
+  .faq { display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.4rem; }
+  .faq-item h3 { font-size: 0.95rem; color: #fff; margin-bottom: 0.5rem; font-family: 'DM Sans', sans-serif; font-weight: 500; }
+  .faq-item p { font-size: 0.87rem; color: var(--text-muted); }
+  .cta-section { background: radial-gradient(ellipse 80% 100% at 50% 50%, rgba(90,0,184,0.18) 0%, transparent 70%); text-align: center; padding: 5rem 5%; }
+  .breadcrumb { padding: 6rem 5% 0; font-size: 0.82rem; color: var(--text-muted); }
+  .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--purple-light); }
+  .tools-list { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .tool-badge { background: rgba(155,95,255,0.12); border: 1px solid rgba(155,95,255,0.3); color: var(--purple-light); padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.82rem; }
+  .highlight { color: var(--purple-light); }
+  @media (max-width: 768px) {
+    nav span { display: none; }
+    .hero { padding: 6rem 5% 3rem; }
+    .hero p { font-size: 0.95rem; }
+    section { padding: 2.5rem 5%; }
+    .card-grid { grid-template-columns: 1fr; }
+    .price-box { padding: 1.8rem; }
+    .price-box .price { font-size: 1.8rem; }
+    .cta-section { padding: 3rem 5%; }
+    .breadcrumb { padding: 5rem 5% 0; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 1.5rem; }
+    .btn-wa, .btn-primary { display: block; text-align: center; }
+    .tools-list { gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:rgba(13,13,20,0.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(90,0,184,0.18);">
+  <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <img src="../../logo.png" alt="AI Company CO" style="width:40px;height:40px;object-fit:contain;mix-blend-mode:screen;">
+    <span style="font-family:'Orbitron',monospace;font-size:0.9rem;font-weight:700;color:#fff;letter-spacing:0.1em;">AI COMPANY CO</span>
+  </a>
+  <a href="/#contacto" style="background:#5A00B8;color:#fff;padding:0.6rem 1.4rem;border-radius:4px;text-decoration:none;font-size:0.82rem;font-weight:500;">Hablemos →</a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Inicio</a> / <a href="/servicios/">Servicios</a> / WhatsApp Automatizado
+</div>
+
+<section class="hero">
+  <div class="badge">AUTOMATIZACIÓN WHATSAPP BUSINESS</div>
+  <h1>Automatiza tu WhatsApp Business y<br><span class="highlight">vende mientras duermes</span></h1>
+  <p>Implementamos bots de IA sobre WhatsApp Business API para que tu empresa atienda clientes, cierre ventas y envíe recordatorios automáticos — las 24 horas, los 7 días de la semana.</p>
+  <a href="https://wa.me/573212674754?text=Hola,%20quiero%20automatizar%20mi%20WhatsApp%20Business" class="btn-wa">Quiero automatizar mi WhatsApp →</a>
+</section>
+
+<section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">¿Qué es la automatización de WhatsApp Business?</h2>
+    <p style="color:var(--text-muted); margin-bottom:1.2rem;">La automatización de WhatsApp Business consiste en conectar tu número empresarial a la API oficial de WhatsApp para que un sistema inteligente responda mensajes, guíe conversaciones y ejecute acciones sin intervención humana. No es el simple chatbot de respuestas rápidas que ya conoces: hablamos de flujos complejos, inteligencia artificial integrada y conexión con tu CRM, facturación y sistemas internos.</p>
+    <p style="color:var(--text-muted);">Con nuestra implementación, tu empresa puede atender a cientos de clientes simultáneamente, calificar leads automáticamente, agendar citas en tu calendario, enviar cotizaciones personalizadas y mucho más — todo desde un solo número de WhatsApp.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Beneficios clave para tu empresa</h2>
+    <p class="section-sub">Resultados reales que nuestros clientes experimentan desde el primer mes de implementación.</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🕐</div>
+        <h3>Atención 24/7 sin costo adicional</h3>
+        <p>Tu bot responde a cualquier hora, incluso fines de semana y festivos. Ningún cliente queda sin respuesta inmediata.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Respuesta en menos de 3 segundos</h3>
+        <p>El tiempo de respuesta promedio es inmediato. Los clientes reciben atención instantánea sin esperar a un agente.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>Más conversiones de leads</h3>
+        <p>Los leads que reciben respuesta en los primeros 5 minutos tienen 9 veces más probabilidades de convertir. Tu bot nunca se tarda.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <h3>Gestión multiagente</h3>
+        <p>Un solo número, múltiples agentes humanos trabajando en paralelo con bandeja compartida y escalamiento automático.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <h3>Integración con tus sistemas</h3>
+        <p>Conectamos con tu CRM (HubSpot, Zoho, Pipedrive), ERP, Google Sheets, correo y cualquier sistema vía API.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Métricas y reportes</h3>
+        <p>Dashboard con conversaciones, tiempos de respuesta, tasas de conversión y reportes semanales automáticos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">Casos de uso que implementamos</h2>
+    <p class="section-sub">Cada empresa es diferente. Aquí los casos más comunes que resolvemos.</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🛒</div>
+        <h3>Bot de ventas</h3>
+        <p>Presenta catálogo, responde preguntas de precio y características, genera cotizaciones PDF y cierra ventas o agenda llamadas con un asesor.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎧</div>
+        <h3>Soporte al cliente</h3>
+        <p>Responde preguntas frecuentes, consulta estado de pedidos en tiempo real, escala casos complejos a agente humano con contexto completo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <h3>Agendamiento y recordatorios</h3>
+        <p>Agenda citas, consultas y servicios. Envía recordatorios 24h y 1h antes, reduce las ausencias hasta un 70%.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔔</div>
+        <h3>Notificaciones transaccionales</h3>
+        <p>Confirmaciones de pago, actualizaciones de envío, facturas electrónicas, estados de servicio — automáticamente al número del cliente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Herramientas y tecnologías que usamos</h2>
+    <p class="section-sub">Construimos sobre la API oficial de WhatsApp Business y las plataformas de automatización más robustas del mercado.</p>
+    <div class="tools-list">
+      <span class="tool-badge">WhatsApp Business API (Meta)</span>
+      <span class="tool-badge">Make (Integromat)</span>
+      <span class="tool-badge">n8n</span>
+      <span class="tool-badge">OpenAI GPT-4</span>
+      <span class="tool-badge">Twilio</span>
+      <span class="tool-badge">Wati</span>
+      <span class="tool-badge">HubSpot CRM</span>
+      <span class="tool-badge">Google Sheets</span>
+      <span class="tool-badge">Airtable</span>
+      <span class="tool-badge">Zapier</span>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">Proceso de implementación en 4 pasos</h2>
+    <p class="section-sub">Desde el diagnóstico hasta el bot en producción en 2 a 4 semanas.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>Diagnóstico y diseño de flujos</h3>
+          <p>Analizamos tus procesos actuales, tus preguntas frecuentes y objetivos. Diseñamos los flujos de conversación y definimos las integraciones necesarias con tus sistemas.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>Configuración de la API y número</h3>
+          <p>Gestionamos la aprobación de tu número en la API oficial de WhatsApp Business (Meta), configuramos el perfil empresarial y verificamos el negocio.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>Desarrollo e integración</h3>
+          <p>Construimos los flujos de automatización en Make o n8n, integramos con tus sistemas (CRM, ERP, bases de datos) y configuramos la IA para respuestas inteligentes.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h3>Pruebas, lanzamiento y soporte</h3>
+          <p>Realizamos pruebas exhaustivas con escenarios reales, capacitamos a tu equipo y lanzamos. Incluye 30 días de soporte post-lanzamiento sin costo adicional.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;">Inversión</h2>
+    <p class="section-sub" style="text-align:center; margin:0 auto 2rem;">Proyectos desde implementación básica hasta soluciones enterprise con múltiples canales.</p>
+    <div class="price-box">
+      <p style="color:var(--text-muted); font-size:0.85rem;">Desde</p>
+      <div class="price">COP $2.000.000</div>
+      <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1.2rem;">Implementación única + configuración</p>
+      <ul>
+        <li>Configuración API oficial WhatsApp Business</li>
+        <li>Diseño e implementación de flujos de conversación</li>
+        <li>Integración con 1 sistema externo (CRM, Google Sheets, etc.)</li>
+        <li>Panel de gestión de conversaciones</li>
+        <li>Capacitación del equipo (2 horas)</li>
+        <li>30 días de soporte incluido</li>
+      </ul>
+      <a href="https://wa.me/573212674754?text=Hola,%20quiero%20conocer%20los%20precios%20de%20WhatsApp%20automatizado" class="btn-wa" style="width:100%; display:block; text-align:center; margin-top:1.2rem;">Cotizar mi proyecto →</a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>¿Necesito un número nuevo o puedo usar el de mi empresa?</h3>
+        <p>Puedes migrar tu número actual a la API oficial de WhatsApp Business. El proceso tarda entre 3 y 7 días hábiles y requiere que el número no esté usando WhatsApp regularmente en un dispositivo. También es posible activar un número nuevo si prefieres.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿La automatización reemplaza a mi equipo de atención?</h3>
+        <p>No necesariamente. La IA maneja las consultas repetitivas (que suelen ser el 70-80% del volumen) y transfiere al agente humano cuando la situación lo requiere. Tu equipo se enfoca en los casos que realmente necesitan su atención.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Cuánto tiempo tarda la implementación?</h3>
+        <p>Entre 2 y 4 semanas dependiendo de la complejidad. Un bot básico de preguntas frecuentes puede estar listo en 10 días. Soluciones con múltiples integraciones y lógica compleja pueden tomar hasta 6 semanas.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Hay costos mensuales además de la implementación?</h3>
+        <p>Sí. La API de WhatsApp Business tiene costos por conversación (Meta cobra ~USD $0.005 por conversación de servicio en Colombia). También pueden existir costos de la plataforma de automatización (Make, Wati, etc.) según el plan requerido. Te detallamos todo antes de empezar.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿En qué se diferencia de los bots gratuitos de WhatsApp Web?</h3>
+        <p>Los bots no oficiales (que usan WhatsApp Web hackeado) violan los términos de Meta y pueden resultar en el bloqueo permanente de tu número. Nosotros trabajamos exclusivamente con la API oficial, garantizando estabilidad, seguridad y cumplimiento de políticas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:1rem;">¿Listo para automatizar tu WhatsApp?</h2>
+  <p style="color:var(--text-muted); max-width:500px; margin:0 auto 2rem;">Agenda una llamada de diagnóstico gratuita de 30 minutos. Analizamos tu caso y te decimos exactamente qué se puede automatizar y cuánto te va a costar.</p>
+  <a href="https://wa.me/573212674754?text=Hola,%20quiero%20una%20llamada%20de%20diagn%C3%B3stico%20para%20automatizar%20mi%20WhatsApp" class="btn-wa">Agendar diagnóstico gratuito →</a>
+</section>
+
+<footer style="background:#0D0D14;border-top:1px solid rgba(255,255,255,0.06);padding:2rem 5%;text-align:center;">
+  <p style="font-size:0.78rem;color:#8A8D99;">© 2025 AI Company CO · <a href="/politica-de-privacidad/" style="color:#9B5FFF;">Privacidad</a> · <a href="/terminos-y-condiciones/" style="color:#9B5FFF;">Términos</a> · <a href="/tratamiento-de-datos/" style="color:#9B5FFF;">Tratamiento de datos</a></p>
+</footer>
+<script src="../../wa-widget.js"></script>
+</body>
+</html>
