@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automatización de Procesos para Constructoras en Colombia (Guía 2026) | AI Company CO</title>
+  <meta name="description" content="Guía práctica de automatización para constructoras colombianas: cotizaciones, seguimiento de obra, pagos y más. Ahorra hasta 40% en tiempos operativos." />
+  <link rel="canonical" href="https://aicompanyco.com/blog/automatizacion-procesos-constructoras-colombia/" />
+  <link rel="icon" href="../../logo.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Automatización de Procesos para Constructoras en Colombia (Guía 2026)",
+    "description": "Guía práctica de automatización para constructoras colombianas: cotizaciones, seguimiento de obra, pagos y más. Ahorra hasta 40% en tiempos operativos.",
+    "url": "https://aicompanyco.com/blog/automatizacion-procesos-constructoras-colombia/",
+    "datePublished": "2026-05-21",
+    "dateModified": "2026-05-21",
+    "author": {
+      "@type": "Organization",
+      "name": "AI Company CO",
+      "url": "https://aicompanyco.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI Company CO",
+      "url": "https://aicompanyco.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://aicompanyco.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://aicompanyco.com/blog/automatizacion-procesos-constructoras-colombia/"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --purple-dark: #5A00B8;
+      --purple-light: #9B5FFF;
+      --bg: #0D0D14;
+      --bg2: #12121C;
+      --text: #E8E8F0;
+      --text-muted: #8A8D99;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    a { color: var(--purple-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13,13,20,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(155,95,255,0.15);
+      padding: 0 1.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 34px;
+      width: auto;
+    }
+
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.03em;
+    }
+
+    .btn-nav {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple-light));
+      color: #fff;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-nav:hover { opacity: 0.85; text-decoration: none; }
+
+    /* LAYOUT */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      padding: 1rem 0 0.25rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a { color: var(--text-muted); }
+    .breadcrumb a:hover { color: var(--purple-light); }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* HERO */
+    .hero {
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid rgba(155,95,255,0.12);
+      margin-bottom: 2.5rem;
+    }
+
+    .post-category {
+      display: inline-block;
+      background: rgba(155,95,255,0.15);
+      color: var(--purple-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 40%, var(--purple-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .post-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ARTICLE BODY */
+    .article-body h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 700;
+      color: var(--purple-light);
+      margin: 2.5rem 0 1rem;
+      line-height: 1.35;
+    }
+
+    .article-body h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 1.75rem 0 0.6rem;
+    }
+
+    .article-body p {
+      margin-bottom: 1.1rem;
+      color: var(--text);
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 0.75rem 0 1.25rem 1.4rem;
+      color: var(--text);
+    }
+
+    .article-body li {
+      margin-bottom: 0.5rem;
+    }
+
+    .article-body strong { color: #fff; }
+
+    /* USE CASE */
+    .use-case {
+      background: var(--bg2);
+      border: 1px solid rgba(155,95,255,0.2);
+      border-left: 4px solid var(--purple-light);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .use-case .use-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--purple-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .use-case p {
+      margin: 0;
+      font-size: 0.93rem;
+    }
+
+    /* CALLOUT */
+    .callout {
+      background: linear-gradient(135deg, rgba(90,0,184,0.2), rgba(155,95,255,0.12));
+      border: 1px solid rgba(155,95,255,0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .callout p {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 0;
+    }
+
+    .callout span {
+      display: block;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      font-weight: 400;
+    }
+
+    /* CTA INLINE */
+    .cta-inline {
+      background: var(--bg2);
+      border: 1px solid rgba(155,95,255,0.25);
+      border-radius: 10px;
+      padding: 1.75rem 1.5rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+
+    .cta-inline p {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-wa:hover { background: #1db954; text-decoration: none; }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid rgba(155,95,255,0.12);
+      padding: 1.25rem 0;
+    }
+
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-item p {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* TABLA */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0 1.75rem;
+      font-size: 0.88rem;
+    }
+
+    .price-table th {
+      background: rgba(90,0,184,0.25);
+      color: var(--purple-light);
+      padding: 0.65rem 0.9rem;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(155,95,255,0.2);
+    }
+
+    .price-table td {
+      padding: 0.65rem 0.9rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    .price-table tr:hover td { background: rgba(155,95,255,0.05); }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid rgba(155,95,255,0.15);
+      padding: 2.5rem 1.25rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover { color: var(--purple-light); }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* OFFSET NAV */
+    main { padding-top: 60px; }
+
+    @media (max-width: 480px) {
+      .price-table { font-size: 0.78rem; }
+      .price-table th, .price-table td { padding: 0.5rem 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../../index_con_logo.html" class="nav-logo">
+      <img src="../../logo.png" alt="AI Company CO logo" />
+      <span>AI Company CO</span>
+    </a>
+    <a href="../../index_con_logo.html#contacto" class="btn-nav">Hablemos →</a>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../../index_con_logo.html">Inicio</a>
+        <span>›</span>
+        <a href="../../blog/">Blog</a>
+        <span>›</span>
+        <span>Automatización para Constructoras</span>
+      </nav>
+
+      <!-- HERO -->
+      <header class="hero">
+        <span class="post-category">Automatización · Constructoras</span>
+        <h1>Automatización de Procesos para Constructoras en Colombia (Guía 2026)</h1>
+        <p class="post-meta">Por AI Company CO &nbsp;·&nbsp; Mayo 21, 2026 &nbsp;·&nbsp; 9 minutos de lectura</p>
+      </header>
+
+      <!-- ARTICLE BODY -->
+      <article class="article-body">
+
+        <p>Una constructora mediana en Colombia puede recibir entre 30 y 80 solicitudes de cotización al mes. El problema no es la cantidad — es que el 60% de esas solicitudes se responden con más de 48 horas de demora, o simplemente se pierden en el correo. Mientras tanto, el proveedor del lado ya cerró con la competencia.</p>
+
+        <p>La industria de la construcción en Colombia mueve cerca de <strong>$60 billones de pesos anuales</strong> (CAMACOL, 2025), pero opera internamente con procesos de hace 15 años: Excel, WhatsApp manual, carpetas en Drive sin orden y supervisores que gastan 3 horas diarias haciendo seguimiento telefónico a obreros y subcontratistas.</p>
+
+        <p>Este artículo va directo al grano: qué procesos se pueden automatizar hoy, cuánto cuesta hacerlo en Colombia y cuál es el retorno real para una constructora de tamaño mediano.</p>
+
+        <!-- H2 #1 -->
+        <h2>¿Qué significa automatizar procesos en una constructora colombiana?</h2>
+
+        <p>Automatizar no significa comprar un ERP de $200 millones y capacitar a todo el personal durante seis meses. Para una constructora colombiana con 20 a 200 empleados, automatizar significa conectar lo que ya tienen — WhatsApp, correo, planillas — con herramientas de inteligencia artificial que hacen el trabajo repetitivo sin intervención humana.</p>
+
+        <p>Un <strong>Asistente IA</strong> puede atender cotizaciones a las 2 a.m., enviar recordatorios de pago a subcontratistas, actualizar el estado de avance de obra en tiempo real y generar reportes semanales sin que nadie tenga que escribir una sola fila en Excel.</p>
+
+        <p>Los procesos más costosos en tiempo dentro de una constructora típica en Bogotá, Medellín o Cali son:</p>
+
+        <ul>
+          <li>Respuesta a solicitudes de cotización (materiales, mano de obra, maquinaria)</li>
+          <li>Seguimiento de pagos a proveedores y contratistas</li>
+          <li>Coordinación de turnos y personal en obra</li>
+          <li>Reportes de avance para clientes e interventorías</li>
+          <li>Gestión de documentos: planos, permisos, licencias, pólizas</li>
+          <li>Atención postventa a compradores de vivienda</li>
+        </ul>
+
+        <p>Cada uno de esos procesos tiene un costo oculto enorme. No en dinero directo, sino en horas de personas calificadas haciendo tareas que una máquina puede hacer mejor y sin errores.</p>
+
+        <!-- H2 #2 -->
+        <h2>Casos de uso concretos: automatización que ya funciona en obra</h2>
+
+        <div class="use-case">
+          <p class="use-label">Caso 1 — Cotizaciones automáticas</p>
+          <p>Un cliente o proveedor escribe por WhatsApp pidiendo cotización de concreto de 3.000 PSI para 200 m³. El Asistente IA recibe el mensaje, identifica la solicitud, consulta la lista de precios actualizada, genera la cotización en PDF y la envía de vuelta en menos de 2 minutos. Sin que ningún vendedor intervenga. Si el cliente acepta, el sistema crea la orden y notifica al almacenista.</p>
+        </div>
+
+        <div class="use-case">
+          <p class="use-label">Caso 2 — Seguimiento de avance de obra</p>
+          <p>El maestro de obra envía una foto por WhatsApp con el mensaje "cimentación lista 60%". El Asistente IA lee el mensaje, actualiza el tablero del proyecto, calcula el porcentaje de avance global y envía un resumen automático al gerente de proyecto y al cliente. El informe semanal se genera solo, sin que el ingeniero residente pase dos horas armando una presentación en PowerPoint.</p>
+        </div>
+
+        <div class="use-case">
+          <p class="use-label">Caso 3 — Cobros y pagos a subcontratistas</p>
+          <p>Cada quincena, el sistema revisa qué subcontratistas tienen cortes aprobados pendientes de pago, les envía un mensaje por WhatsApp con el valor a pagar, la fecha estimada y los documentos que hacen falta. Si hay documentos pendientes (póliza vencida, paz y salvo de parafiscales), el Asistente IA solicita automáticamente la documentación antes de liberar el pago. Cero llamadas de seguimiento.</p>
+        </div>
+
+        <div class="use-case">
+          <p class="use-label">Caso 4 — Postventa vivienda nueva</p>
+          <p>El comprador de un apartamento en Soacha o Chía reporta una gotera por WhatsApp. El Asistente IA abre un ticket, clasifica la urgencia, asigna al técnico disponible y notifica al cliente con fecha estimada de visita. El cliente hace seguimiento directo sin tener que llamar a la constructora. La satisfacción postventa sube, los reclamos ante la Superintendencia de Industria bajan.</p>
+        </div>
+
+        <div class="use-case">
+          <p class="use-label">Caso 5 — Gestión de licencias y documentos legales</p>
+          <p>El sistema alerta con 30 días de anticipación cuando una póliza de cumplimiento, una licencia de construcción o una garantía va a vencer. Genera el recordatorio automático al área jurídica y al director de obra. Sin sorpresas, sin multas por vencimiento.</p>
+        </div>
+
+        <!-- CTA INLINE MEDIO -->
+        <div class="cta-inline">
+          <p>¿Tienes una constructora y quieres ver cómo funciona esto en la práctica?</p>
+          <a
+            href="https://wa.me/573212674754?text=Hola%2C%20le%C3%AD%20el%20art%C3%ADculo%20sobre%20automatizaci%C3%B3n%20procesos%20constructoras%20colombia%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n."
+            class="btn-wa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.849L.057 23.571a.75.75 0 00.937.937l5.722-1.471A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.716 9.716 0 01-5.007-1.387l-.36-.214-3.733.959.976-3.636-.234-.374A9.716 9.716 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+            Hablar con un asesor ahora
+          </a>
+        </div>
+
+        <!-- H2 #3 -->
+        <h2>¿Cuánto cuesta implementar automatización en una constructora colombiana?</h2>
+
+        <p>Esta es la pregunta que más evitan responder los proveedores de tecnología. Nosotros la respondemos directo.</p>
+
+        <p>Los costos dependen del tamaño de la constructora, la cantidad de procesos a automatizar y si ya tienen algún sistema base. Pero para que tengas un punto de referencia real:</p>
+
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Solución</th>
+              <th>Inversión inicial (COP)</th>
+              <th>Mensualidad (COP)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Asistente IA WhatsApp (cotizaciones + postventa)</td>
+              <td>$2.500.000 – $4.500.000</td>
+              <td>$350.000 – $700.000</td>
+            </tr>
+            <tr>
+              <td>Automatización de reportes de obra</td>
+              <td>$1.800.000 – $3.000.000</td>
+              <td>$250.000 – $500.000</td>
+            </tr>
+            <tr>
+              <td>Seguimiento de cobros y pagos a subcontratistas</td>
+              <td>$2.000.000 – $3.500.000</td>
+              <td>$300.000 – $600.000</td>
+            </tr>
+            <tr>
+              <td>Gestión documental con alertas automáticas</td>
+              <td>$1.500.000 – $2.500.000</td>
+              <td>$200.000 – $400.000</td>
+            </tr>
+            <tr>
+              <td>Suite completa (todos los módulos integrados)</td>
+              <td>$6.000.000 – $12.000.000</td>
+              <td>$900.000 – $1.800.000</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Comparado con lo que cuesta un auxiliar administrativo en Colombia — alrededor de <strong>$1.800.000 a $2.400.000 mensuales con prestaciones</strong> — la automatización se paga sola en el primer mes si reemplaza aunque sea el 50% del trabajo repetitivo de ese rol.</p>
+
+        <p>Y a diferencia de un empleado, el Asistente IA trabaja 24/7, no pide vacaciones, no comete errores de digitación y escala sin costo adicional cuando el proyecto crece.</p>
+
+        <!-- CALLOUT -->
+        <div class="callout">
+          <p>📊 Las constructoras que implementan automatización de cotizaciones y seguimiento reducen el tiempo de respuesta comercial de 48 horas a menos de 3 minutos, incrementando la tasa de cierre entre un 25% y un 35%.</p>
+          <span>Dato basado en implementaciones de AI Company CO en el sector construcción, 2024-2025.</span>
+        </div>
+
+        <!-- H2 #4 -->
+        <h2>Por dónde empezar: el proceso con mayor ROI primero</h2>
+
+        <p>Si tienes que escoger un solo proceso para automatizar primero, elige <strong>la atención de cotizaciones y la comunicación con clientes potenciales</strong>. Es donde más dinero se pierde por lentitud, y donde la automatización tiene el impacto más inmediato y medible.</p>
+
+        <p>El segundo proceso con mejor retorno es la gestión de subcontratistas: recordatorios de documentos, alertas de vencimiento y confirmaciones de corte. Una constructora que maneja 15 subcontratistas simultáneos puede ahorrar entre 12 y 20 horas semanales solo en seguimiento telefónico.</p>
+
+        <p>El orden recomendado para una constructora colombiana que empieza desde cero:</p>
+
+        <ol>
+          <li><strong>Mes 1-2:</strong> Asistente IA para cotizaciones y atención al cliente por WhatsApp</li>
+          <li><strong>Mes 2-3:</strong> Automatización de seguimiento a subcontratistas y pagos</li>
+          <li><strong>Mes 3-4:</strong> Reportes automáticos de avance de obra</li>
+          <li><strong>Mes 4-6:</strong> Gestión documental y alertas legales</li>
+          <li><strong>Mes 6+:</strong> Integración con contabilidad y sistemas existentes</li>
+        </ol>
+
+        <p>Este enfoque gradual evita el error más común: intentar digitalizar todo al mismo tiempo, colapsar operativamente durante la implementación y terminar volviendo a los Excel.</p>
+
+        <!-- H2 #5 -->
+        <h2>Realidades del sector construcción en Colombia que la IA resuelve bien</h2>
+
+        <p>Colombia tiene particularidades que muchas soluciones tecnológicas importadas no contemplan. Aquí algunos puntos clave:</p>
+
+        <p><strong>Alta rotación de personal en obra:</strong> Un Asistente IA no depende de que un empleado específico recuerde los procedimientos. Las reglas están en el sistema. Nuevo maestro de obra, mismo proceso.</p>
+
+        <p><strong>Clientes que solo usan WhatsApp:</strong> En ciudades intermedias como Ibagué, Bucaramanga o Pereira, el 80% de la comunicación comercial pasa por WhatsApp. Un asistente que vive ahí tiene una ventaja enorme sobre sistemas que obligan al cliente a entrar a un portal web.</p>
+
+        <p><strong>Proyectos en zonas con conectividad intermitente:</strong> Los mejores Asistentes IA están diseñados para funcionar con respuestas asíncronas. Si el maestro envía el reporte a las 11 p.m. desde una obra en Girardot con mala señal, el sistema lo procesa cuando llega y actualiza el tablero sin intervención.</p>
+
+        <p><strong>Cumplimiento normativo:</strong> Las constructoras colombianas deben cumplir con RUC, NSR-10, normas ICONTEC y una cantidad de requisitos de CAMACOL. Un sistema de alertas automáticas de vencimiento de documentos evita sanciones costosas.</p>
+
+        <!-- H2 #6 — FAQ -->
+        <h2>Preguntas frecuentes</h2>
+
+        <div class="faq-item">
+          <h3>¿Necesito tener un sistema ERP o CRM para implementar automatización?</h3>
+          <p>No. La mayoría de las soluciones que desarrollamos en AI Company CO se integran directamente con WhatsApp, correo electrónico y hojas de cálculo que ya usan en la empresa. No es necesario tener un ERP previo, aunque si ya tienes uno, podemos conectar el asistente a él para que los datos fluyan automáticamente.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>¿Cuánto tiempo tarda la implementación?</h3>
+          <p>Para una constructora mediana, la implementación de un Asistente IA funcional para cotizaciones y atención al cliente tarda entre 2 y 4 semanas. Incluye el levantamiento de información de tu empresa, configuración del asistente, pruebas en ambiente real y capacitación del equipo. Los procesos más complejos, como integración con contabilidad, pueden tomar 6 a 10 semanas.
