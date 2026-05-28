@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Móvil para Supermercados en Colombia: Domicilios y Fidelización | AI Company CO</title>
+  <meta name="description" content="Crea una app móvil para tu supermercado en Colombia. Gestiona domicilios, fideliza clientes y aumenta ventas. Desde $3.500.000 COP. Hablamos hoy." />
+  <link rel="canonical" href="https://aicompanyco.com/blog/app-movil-supermercado-colombia/" />
+  <link rel="icon" href="../../logo.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Schema.org Article JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "App Móvil para Supermercados en Colombia: Domicilios y Fidelización",
+    "description": "Crea una app móvil para tu supermercado en Colombia. Gestiona domicilios, fideliza clientes y aumenta ventas desde $3.500.000 COP.",
+    "url": "https://aicompanyco.com/blog/app-movil-supermercado-colombia/",
+    "datePublished": "2026-05-28",
+    "dateModified": "2026-05-28",
+    "author": {
+      "@type": "Organization",
+      "name": "AI Company CO",
+      "url": "https://aicompanyco.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI Company CO",
+      "url": "https://aicompanyco.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://aicompanyco.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://aicompanyco.com/blog/app-movil-supermercado-colombia/"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --purple-dark: #5A00B8;
+      --purple-light: #9B5FFF;
+      --bg: #0D0D14;
+      --bg2: #12121C;
+      --text: #E8E8F0;
+      --text-muted: #8A8D99;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--purple-light);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(13, 13, 20, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(155, 95, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    .btn-nav {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple-light));
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-nav:hover {
+      opacity: 0.88;
+      text-decoration: none;
+    }
+
+    /* CONTENEDOR */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      padding-top: 88px;
+      padding-bottom: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--purple-light);
+    }
+
+    .breadcrumb span {
+      margin: 0 6px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 32px 0 40px;
+      border-bottom: 1px solid rgba(155, 95, 255, 0.12);
+      margin-bottom: 40px;
+    }
+
+    .post-category {
+      display: inline-block;
+      background: rgba(90, 0, 184, 0.25);
+      border: 1px solid rgba(155, 95, 255, 0.4);
+      color: var(--purple-light);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .post-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ARTICLE BODY */
+    .article-body h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(18px, 2.8vw, 24px);
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 44px;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .article-body h3 {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--purple-light);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    .article-body p {
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 16px 0 20px 24px;
+      color: var(--text);
+    }
+
+    .article-body li {
+      margin-bottom: 10px;
+    }
+
+    .article-body strong {
+      color: #fff;
+    }
+
+    /* CALLOUT */
+    .callout {
+      background: linear-gradient(135deg, rgba(90, 0, 184, 0.18), rgba(155, 95, 255, 0.12));
+      border-left: 4px solid var(--purple-light);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 36px 0;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .callout strong {
+      color: var(--purple-light);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* CTA INLINE */
+    .cta-inline {
+      background: var(--bg2);
+      border: 1px solid rgba(155, 95, 255, 0.3);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+      margin: 44px 0;
+    }
+
+    .cta-inline h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .cta-inline p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .btn-wa {
+      display: inline-block;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-wa:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    /* USE CASE */
+    .use-case {
+      background: var(--bg2);
+      border: 1px solid rgba(155, 95, 255, 0.2);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+    }
+
+    .use-case h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--purple-light);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .use-case p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid rgba(155, 95, 255, 0.12);
+      padding: 20px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* PRICE TABLE */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .price-table th {
+      background: rgba(90, 0, 184, 0.3);
+      color: var(--purple-light);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .price-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(155, 95, 255, 0.1);
+      color: var(--text);
+    }
+
+    .price-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .price-table tr:hover td {
+      background: rgba(155, 95, 255, 0.05);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid rgba(155, 95, 255, 0.12);
+      margin-top: 80px;
+      padding: 48px 20px 32px;
+    }
+
+    .footer-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      text-decoration: none;
+    }
+
+    .footer-logo img {
+      height: 32px;
+    }
+
+    .footer-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--purple-light);
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        padding: 0 16px;
+      }
+      .nav-logo span {
+        display: none;
+      }
+      .cta-inline {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../../index_con_logo.html" class="nav-logo">
+      <img src="../../logo.png" alt="AI Company CO Logo" />
+      <span>AI Company CO</span>
+    </a>
+    <a href="../../index_con_logo.html#contacto" class="btn-nav">Hablemos →</a>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../../index_con_logo.html">Inicio</a>
+      <span>›</span>
+      <a href="../../blog/">Blog</a>
+      <span>›</span>
+      <span>App para Supermercados</span>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <div class="container">
+    <div class="hero">
+      <div class="post-category">Apps · Supermercados</div>
+      <h1>App Móvil para Supermercados en Colombia: Domicilios y Fidelización</h1>
+      <div class="post-meta">Por AI Company CO &nbsp;·&nbsp; Mayo 28, 2026 &nbsp;·&nbsp; 9 minutos de lectura</div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <main class="container">
+    <article class="article-body">
+
+      <p>
+        En Colombia hay más de 45.000 tiendas de barrio y cientos de supermercados independientes que perdieron ventas durante los últimos años porque no tenían cómo competir con Rappi, Merqueo o los grandes supermercados con app propia. El cliente ya no llama por teléfono para pedir el domicilio: abre el celular, busca la tienda más rápida y le da clic. Si tu supermercado no aparece ahí, simplemente no existe para ese cliente.
+      </p>
+
+      <p>
+        El problema no es falta de productos ni mal servicio. El problema es visibilidad y comodidad digital. Un supermercado en Bosa, Soacha, Bucaramanga o Cali puede tener precios mejores que Éxito y atención más rápida que Rappi, pero si no tiene app propia o canal digital, ese cliente no lo va a encontrar cuando abra el celular a las 7 PM con hambre.
+      </p>
+
+      <p>
+        Este artículo explica qué hace una app móvil para supermercados, cuánto cuesta en Colombia, qué resultados reales puede esperar un negocio mediano, y cómo empezar sin complicaciones técnicas.
+      </p>
+
+      <h2>¿Qué hace exactamente una app móvil para supermercados?</h2>
+
+      <p>
+        Una app empresarial para supermercado no es lo mismo que tener un perfil en Rappi. Cuando entras a Rappi, estás en una vitrina donde compites con todos los demás y le pagas comisión del 25% al 35% por cada pedido. Con tu propia app, el cliente llega directo a ti, sin intermediarios, sin comisiones, con tus precios y tu marca.
+      </p>
+
+      <p>
+        Estas son las funciones principales que incluye una app bien desarrollada para supermercados en Colombia:
+      </p>
+
+      <ul>
+        <li><strong>Catálogo digital con fotos y precios:</strong> El cliente navega por categorías (frutas y verduras, carnes, lácteos, aseo, bebidas) igual que en una tienda física pero desde el celular.</li>
+        <li><strong>Pedidos con domicilio o recogida en tienda:</strong> El cliente elige si quiere que le lleven el pedido o si prefiere pasar a recogerlo. El domiciliario recibe el aviso automáticamente.</li>
+        <li><strong>Pagos integrados:</strong> PSE, tarjetas de crédito/débito, Nequi, Daviplata y efectivo en la entrega. Los colombianos siguen usando mucho el efectivo, así que no puede faltar esa opción.</li>
+        <li><strong>Notificaciones push personalizadas:</strong> "Hoy el pollo está al 20% de descuento" o "Tus plátanos de la semana pasada están disponibles". El cliente recibe el mensaje en su pantalla sin que tú tengas que hacer nada manual.</li>
+        <li><strong>Programa de puntos y fidelización:</strong> Por cada compra el cliente acumula puntos que canjea en descuentos. Esto es lo que hace que el cliente vuelva a tu supermercado en lugar de irse a la competencia.</li>
+        <li><strong>Historial de compras:</strong> El cliente puede repetir el pedido anterior con un solo toque. Muy útil para las compras del mercado mensual.</li>
+        <li><strong>Panel de administración para el negocio:</strong> Desde una pantalla ves los pedidos en tiempo real, cuánto se vende por categoría, cuáles clientes compran más, y qué productos se están agotando.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>📊 Dato clave</strong>
+        Según datos del Observatorio eCommerce Colombia 2025, el 63% de las compras de supermercado en línea se hacen desde el celular. Los supermercados con app propia reducen la dependencia de marketplaces externos y mejoran su margen bruto entre un 18% y un 28% al eliminar comisiones de terceros.
+      </div>
+
+      <h2>Casos de uso reales para supermercados colombianos</h2>
+
+      <p>
+        Veamos cómo funciona esto en práctica para distintos tipos de supermercados en Colombia:
+      </p>
+
+      <div class="use-case">
+        <h4>🏪 Supermercado de barrio en Soacha o Bosa</h4>
+        <p>Un supermercado con 3 a 5 empleados puede lanzar su app con catálogo básico, pedidos por WhatsApp integrado y pagos por Nequi. Los clientes del barrio la descargan, hacen el pedido desde la casa y el domiciliario del negocio lo lleva en 30 minutos. Sin pagarle comisión a nadie. El ticket promedio sube porque el cliente agrega más cosas al carrito digital que a la canasta física.</p>
+      </div>
+
+      <div class="use-case">
+        <h4>🏬 Supermercado mediano en Cali o Medellín</h4>
+        <p>Con dos o tres sucursales, la app permite que el cliente elija la tienda más cercana y haga el pedido. El panel de administración centraliza los pedidos de todas las sucursales. El programa de puntos retiene a los clientes frecuentes: si una familia gasta $400.000 COP al mes en mercado, con la app acumula puntos equivalentes a $20.000 COP en descuentos al mes. Suficiente para que no se vaya a la competencia.</p>
+      </div>
+
+      <div class="use-case">
+        <h4>🥩 Carnicería o plaza de mercado con local propio</h4>
+        <p>Negocios especializados como carnicerías, fruterías o tiendas de productos orgánicos en Bogotá (La Perseverancia, Paloquemao) pueden usar la app para recibir pedidos anticipados. El cliente hace el pedido el lunes para recoger el miércoles. Se reduce el desperdicio de producto y el negocio sabe con anticipación cuánto preparar.</p>
+      </div>
+
+      <div class="use-case">
+        <h4>🚚 Distribuidora de alimentos para negocios</h4>
+        <p>Una distribuidora que le vende a restaurantes, cafeterías y panaderías en Cundinamarca puede usar la app como canal de pedidos B2B. El administrador del restaurante hace el pedido desde el celular a las 6 AM para que llegue antes de abrir. Menos llamadas, menos errores, más eficiencia.</p>
+      </div>
+
+      <!-- CTA INLINE 1 -->
+      <div class="cta-inline">
+        <h3>¿Tu supermercado todavía recibe pedidos por llamada?</h3>
+        <p>Cuéntanos cómo funciona tu negocio hoy y te mostramos qué app tiene más sentido para ti. Sin compromiso, sin tecnicismos.</p>
+        <a
+          href="https://wa.me/573212674754?text=Hola%2C%20le%C3%AD%20el%20art%C3%ADculo%20sobre%20app%20m%C3%B3vil%20supermercado%20colombia%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n."
+          class="btn-wa"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💬 Escríbenos por WhatsApp
+        </a>
+      </div>
+
+      <h2>¿Cuánto cuesta desarrollar una app para supermercado en Colombia?</h2>
+
+      <p>
+        Este es el punto donde muchos dueños de supermercado se asustan innecesariamente. Antes, tener una app costaba entre $50 y $200 millones de pesos. Hoy, con las tecnologías actuales y empresas locales que entienden el contexto colombiano, los precios son muy distintos.
+      </p>
+
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>¿Qué incluye?</th>
+            <th>Inversión aproximada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Básico</strong></td>
+            <td>Catálogo digital, pedidos por WhatsApp, pagos Nequi/efectivo, panel básico</td>
+            <td>Desde $3.500.000 COP</td>
+          </tr>
+          <tr>
+            <td><strong>Intermedio</strong></td>
+            <td>App Android + iOS, pasarela de pagos, domicilios, programa de puntos</td>
+            <td>$8.000.000 – $18.000.000 COP</td>
+          </tr>
+          <tr>
+            <td><strong>Completo</strong></td>
+            <td>Multi-sucursal, notificaciones push, historial, reportes avanzados, soporte</td>
+            <td>$20.000.000 – $45.000.000 COP</td>
+          </tr>
+          <tr>
+            <td><strong>Mantenimiento mensual</strong></td>
+            <td>Actualizaciones, soporte técnico, hosting</td>
+            <td>$350.000 – $1.200.000 COP/mes</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Para comparar: si tu supermercado vende $30.000.000 COP al mes y el 20% de esas ventas pasan por Rappi (con comisión del 28%), estás pagando aproximadamente $1.680.000 COP mensuales solo en comisiones. Una app propia se paga sola en menos de un año y después cada peso de domicilio es tuyo.
+      </p>
+
+      <p>
+        También existe la opción de empezar con una <strong>solución más ligera</strong> que usa WhatsApp Business API con catálogo integrado y un bot que recibe pedidos automáticamente. Es la entrada más económica (desde $1.200.000 COP) y funciona muy bien para supermercados pequeños que quieren digitalizar sus domicilios sin la complejidad de una app completa.
+      </p>
+
+      <div class="callout">
+        <strong>💡 Cálculo real de ROI</strong>
+        Un supermercado mediano en Colombia que digitaliza sus domicilios con app propia reporta en promedio: aumento del 35% en ticket promedio por pedido (el cliente agrega más cosas en el carrito digital), reducción del 40% en errores de pedido, y retención de clientes 2,3 veces mayor gracias al programa de puntos. Si vendes $20.000.000 COP mensuales en domicilios, un aumento del 35% significa $7.000.000 COP más al mes.
+      </div>
+
+      <h2>Fidelización: el negocio real detrás de la app</h2>
+
+      <p>
+        El domicilio es lo que el cliente ve. La fidelización es lo que hace crecer el negocio de verdad.
+      </p>
+
+      <p>
+        En Colombia, el 70% de los colombianos hace el mercado en el mismo lugar siempre, por costumbre. Pero esa costumbre se rompe fácil cuando llega una app nueva con descuento de bienvenida. La única forma de retener ese cliente es darle razones concretas para quedarse.
+      </p>
+
+      <p>
+        Un programa de fidelización bien hecho en una app de supermercado funciona así:
+      </p>
+
+      <ul>
+        <li>Por cada $10.000 COP en compras, el cliente gana 1 punto.</li>
+        <li>100 puntos = $5.000 COP de descuento en la próxima compra.</li>
+        <li>Cumpleaños del cliente: doble puntos ese día, con notificación automática.</li>
+        <li>Referidos: si el cliente invita a un amigo que hace su primera compra, ambos ganan 50 puntos.</li>
+        <li>Compras frecuentes: si el cliente compra 4 semanas seguidas, recibe un descuento especial en su quinta compra.</li>
+      </ul>
+
+      <p>
+        Esto no es complicado de implementar. Todo queda configurado en la app desde el inicio. Tú no tienes que hacer nada manual: el sistema entrega los puntos, envía las notificaciones y aplica los descuentos automáticamente.
+      </p>
+
+      <h2>¿Cuánto tiempo tarda en estar lista?</h2>
+
+      <p>
+        Depende del alcance, pero estos son tiempos reales para el contexto colombiano:
+      </p>
+
+      <ul>
+        <li><strong>Solución WhatsApp + catálogo básico:</strong> 1 a 2 semanas.</li>
+        <li><strong>App intermedia con domicilios y puntos:</strong> 6 a 10 semanas.</li>
+        <li><strong>App completa multi-sucursal:</strong> 12 a 20 semanas.</li>
+      </ul>
+
+      <p>
+        Durante el desarrollo, el equipo técnico sube el catálogo de productos, configura los pagos con la pasarela colombiana que el negocio prefiera (PayU, Epayco, Mercado Pago), y hace pruebas antes del lanzamiento. El dueño del supermercado no necesita saber nada de programación.
+      </p>
+
+      <h2>Preguntas frecuentes sobre apps para supermercados en Colombia</h2>
+
+      <div class="faq-item">
+        <h4>¿Mi supermercado necesita ser grande para tener app propia?</h4>
+        <p>No. Supermercados con ventas desde $8.000.000 COP mensuales ya justifican tener su propio canal digital. Si actualmente usas Rappi o WhatsApp para domicilios y recibes más de 20 pedidos a la semana, ya tienes suficiente volumen para que una app propia sea rentable en menos de 12 meses.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>¿La app funciona para Android e iOS al mismo tiempo?</h4>
+        <p>Sí. En Colombia el 85% de los usuarios tiene Android, pero siempre hay clientes con iPhone. Desarrollamos apps que funcionan en las dos plataformas. También existe la opción de Progressive Web App (PWA), que funciona en cualquier celular desde el navegador sin que el cliente tenga que descargar nada desde la tienda de aplicaciones. Esto reduce la fricción de adopción.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>¿Puedo integrar la app con mi sistema de inventario actual?</h4>
+        <p>En la mayoría de los casos sí. Si usas software contable como Siigo, World Office o Helisa, o sistemas de punto de venta como Brigida
