@@ -1,0 +1,44 @@
+name: News Blog Generator (sin tokens)
+
+on:
+  schedule:
+    # Todos los días a las 7am Colombia (12pm UTC)
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  generate-news-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate news blog post (sin IA, cero tokens)
+        id: generator
+        run: node scripts/generate-news-blog.js
+
+      - name: Commit and push if new post
+        if: steps.generator.outputs.new_post == 'true'
+        run: |
+          git config user.name "AI Company News Bot"
+          git config user.email "cesargranados0100@gmail.com"
+          git add blog/ sitemap-seo.xml sitemap-main.xml scripts/published-news.json
+          git diff --staged --quiet || git commit -m "blog: noticia IA → ${{ steps.generator.outputs.slug }} [skip ci]"
+          git push
+
+      - name: Ping Google sitemap
+        if: steps.generator.outputs.new_post == 'true'
+        run: |
+          curl -s "https://www.google.com/ping?sitemap=https://aicompanyco.com/sitemap.xml" || true
+          curl -s "https://www.google.com/ping?sitemap=https://aicompanyco.com/sitemap-main.xml" || true
+          echo "✅ Google notificado"
