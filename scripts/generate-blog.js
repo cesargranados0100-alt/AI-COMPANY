@@ -405,6 +405,14 @@ async function main() {
   console.log(`\n✓ Published: ${topic.titulo}`);
   console.log(`  URL: https://aicompanyco.com/blog/${topic.slug}/`);
   console.log(`  Date: ${dateStr}`);
+
+  // Exportar tokens usados para que el workflow reporte el saldo
+  const usage = message.usage;
+  if (outFile) {
+    fs.appendFileSync(outFile, `input_tokens=${usage.input_tokens}\n`);
+    fs.appendFileSync(outFile, `output_tokens=${usage.output_tokens}\n`);
+  }
+  console.log(`  Tokens: ${usage.input_tokens} in / ${usage.output_tokens} out`);
 }
 
 main().catch((err) => {
