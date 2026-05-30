@@ -1,4 +1,4 @@
-name: Auto Blog Generator (sin tokens)
+name: Auto Blog Generator (Claude)
 
 on:
   schedule:
@@ -7,11 +7,6 @@ on:
     - cron: '0 14 * * 3'
     - cron: '0 14 * * 5'
   workflow_dispatch:
-    inputs:
-      count:
-        description: 'Número de artículos a generar (default: 1)'
-        required: false
-        default: '1'
 
 jobs:
   generate-post:
@@ -30,21 +25,22 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Generate blog posts (cero tokens)
-        run: |
-          COUNT=${{ github.event.inputs.count || '1' }}
-          echo "Generando $COUNT artículos sin IA..."
-          for i in $(seq 1 $COUNT); do
-            echo "=== Artículo $i/$COUNT ==="
-            node scripts/generate-blog-template.js || echo "⚠️ Error en artículo $i"
-          done
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate blog post
+        id: generator
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
+        run: node scripts/generate-blog.js
 
       - name: Commit and push
         run: |
           git config user.name "AI Company Blog Bot"
           git config user.email "cesargranados0100@gmail.com"
           git add blog/ sitemap-seo.xml sitemap-main.xml
-          git diff --staged --quiet || git commit -m "blog: ${{ github.event.inputs.count || '1' }} artículo(s) nuevos [skip ci]"
+          git diff --staged --quiet || git commit -m "blog: nuevo artículo [skip ci]"
           git push
 
       - name: Ping Google sitemap
@@ -52,3 +48,15 @@ jobs:
           curl -s "https://www.google.com/ping?sitemap=https://aicompanyco.com/sitemap.xml" || true
           curl -s "https://www.google.com/ping?sitemap=https://aicompanyco.com/sitemap-main.xml" || true
           echo "✅ Google notificado"
+
+      - name: Notificar Telegram para indexación
+        if: steps.generator.outputs.new_post == 'true'
+        env:
+          SEO_NOTIFY_SECRET: ${{ secrets.SEO_NOTIFY_SECRET }}
+          PLATAFORMA_URL: ${{ secrets.PLATAFORMA_URL }}
+        run: |
+          curl -s -X POST "${PLATAFORMA_URL}/api/seo/notificar-articulo" \
+            -H "Content-Type: application/json" \
+            -H "x-seo-secret: ${SEO_NOTIFY_SECRET}" \
+            -d "{\"titulo\": \"${{ steps.generator.outputs.titulo }}\", \"slug\": \"${{ steps.generator.outputs.slug }}\", \"tipo\": \"blog\"}" \
+            && echo "✅ Telegram notificado" || echo "⚠️ Telegram no disponible"
