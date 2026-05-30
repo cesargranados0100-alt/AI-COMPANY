@@ -6,7 +6,11 @@ on:
     - cron: '0 13 * * 1'
     - cron: '0 13 * * 4'
   workflow_dispatch:
-    # Allow manual trigger from GitHub Actions tab
+    inputs:
+      count:
+        description: 'Número de artículos a generar (default: 1)'
+        required: false
+        default: '1'
 
 jobs:
   generate-post:
@@ -26,23 +30,27 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: |
-          cd scripts
-          npm init -y
-          npm install @anthropic-ai/sdk
+        run: npm install
 
-      - name: Generate blog post
+      - name: Generate blog posts
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
-        run: node scripts/generate-blog.js
+        run: |
+          COUNT=${{ github.event.inputs.count || '1' }}
+          echo "Generando $COUNT artículos..."
+          for i in $(seq 1 $COUNT); do
+            echo "=== Artículo $i/$COUNT ==="
+            node scripts/generate-blog.js || echo "⚠️ Error en artículo $i, continuando..."
+            sleep 2
+          done
 
-      - name: Commit and push new post
+      - name: Commit and push new posts
         run: |
           git config user.name "AI Company Blog Bot"
           git config user.email "cesargranados0100@gmail.com"
           git add blog/ sitemap-seo.xml sitemap-main.xml
-          git diff --staged --quiet || git commit -m "blog: auto-publish new post [skip ci]"
+          git diff --staged --quiet || git commit -m "blog: auto-publish ${{ github.event.inputs.count || '1' }} post(s) [skip ci]"
           git push
 
       - name: Ping Google sitemap

@@ -1,0 +1,13 @@
+{
+  "name": "aicompanyco-blog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate": "node scripts/generate-blog.js",
+    "generate-news": "node scripts/generate-news-blog.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "node-fetch": "^2.7.0"
+  }
+}
