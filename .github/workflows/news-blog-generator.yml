@@ -44,3 +44,15 @@ jobs:
           curl -s "https://www.google.com/ping?sitemap=https://aicompanyco.com/sitemap.xml" || true
           curl -s "https://www.google.com/ping?sitemap=https://aicompanyco.com/sitemap-main.xml" || true
           echo "✅ Google notificado"
+
+      - name: Notificar Telegram para indexación manual
+        if: steps.generator.outputs.new_post == 'true'
+        env:
+          SEO_NOTIFY_SECRET: ${{ secrets.SEO_NOTIFY_SECRET }}
+          PLATAFORMA_URL: ${{ secrets.PLATAFORMA_URL }}
+        run: |
+          curl -s -X POST "${PLATAFORMA_URL}/api/seo/notificar-articulo" \
+            -H "Content-Type: application/json" \
+            -H "x-seo-secret: ${SEO_NOTIFY_SECRET}" \
+            -d "{\"titulo\": \"${{ steps.generator.outputs.titulo }}\", \"slug\": \"${{ steps.generator.outputs.slug }}\", \"tipo\": \"noticia\"}" \
+            && echo "✅ Telegram notificado" || echo "⚠️ Telegram no disponible"

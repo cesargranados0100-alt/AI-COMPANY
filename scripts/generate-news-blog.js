@@ -729,6 +729,9 @@ async function main() {
   if (outFile) {
     fs.appendFileSync(outFile, `new_post=true\n`);
     fs.appendFileSync(outFile, `slug=${slug}\n`);
+    // titulo en una sola línea (sin saltos) para el webhook de Telegram
+    const tituloLinea = title.replace(/\n/g, ' ').replace(/"/g, '\\"');
+    fs.appendFileSync(outFile, `titulo=${tituloLinea}\n`);
   }
 }
 
