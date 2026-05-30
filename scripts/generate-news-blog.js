@@ -551,6 +551,27 @@ function actualizarSitemap(slug, dateStr) {
   });
 }
 
+// ─── IndexNow (Bing/Yandex — indexación instantánea, gratis) ─────────────────
+async function pingIndexNow(url) {
+  const key  = 'a7f3c9e2b8d1f4e6a2c5b9d3e7f1a4c8';
+  const body = JSON.stringify({ host: 'aicompanyco.com', key, urlList: [url] });
+  return new Promise((resolve) => {
+    const req = https.request({
+      hostname: 'api.indexnow.org',
+      path: '/indexnow',
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(body) },
+    }, res => {
+      res.resume();
+      if (res.statusCode === 200 || res.statusCode === 202) console.log('  → IndexNow OK (Bing/Yandex notificados)');
+      else console.log(`  → IndexNow status: ${res.statusCode}`);
+      resolve();
+    });
+    req.on('error', e => { console.log(`  → IndexNow error: ${e.message}`); resolve(); });
+    req.write(body); req.end();
+  });
+}
+
 // ─── Google Indexing ─────────────────────────────────────────────────────────
 async function pingGoogle(slug) {
   const blogUrl    = `https://aicompanyco.com/blog/${slug}/`;
@@ -697,8 +718,9 @@ async function main() {
   fs.writeFileSync(PUBLISHED_FILE, JSON.stringify(published, null, 2), 'utf8');
   console.log(`  ✓ Registrado en published-news.json`);
 
-  // Notificar a Google (sitemap ping + Indexing API)
+  // Notificar buscadores
   await pingGoogle(slug);
+  await pingIndexNow(`https://aicompanyco.com/blog/${slug}/`);
 
   console.log(`\n✅ Artículo publicado: https://aicompanyco.com/blog/${slug}/`);
 

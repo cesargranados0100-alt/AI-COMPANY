@@ -226,6 +226,20 @@ async function notifyGoogleIndexing(url, token) {
   });
 }
 
+// ─── IndexNow ────────────────────────────────────────────────────────────────
+async function pingIndexNow(url) {
+  const key  = 'a7f3c9e2b8d1f4e6a2c5b9d3e7f1a4c8';
+  const body = JSON.stringify({ host: 'aicompanyco.com', key, urlList: [url] });
+  return new Promise((resolve) => {
+    const req = require('https').request({
+      hostname: 'api.indexnow.org', path: '/indexnow', method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(body) },
+    }, res => { res.resume(); console.log(`  → IndexNow: ${res.statusCode}`); resolve(); });
+    req.on('error', e => { console.log(`  → IndexNow error: ${e.message}`); resolve(); });
+    req.write(body); req.end();
+  });
+}
+
 // ─── HTML builder (used as fallback structure context for Claude) ────────────
 
 function buildSystemPrompt() {
@@ -383,8 +397,9 @@ async function main() {
   // update blog index
   updateBlogIndex(topic, dateStr);
 
-  // notify Google
+  // notify Google + IndexNow
   await pingGoogle(topic.slug);
+  await pingIndexNow(`https://aicompanyco.com/blog/${topic.slug}/`);
 
   // print summary for CI log
   console.log(`\n✓ Published: ${topic.titulo}`);
