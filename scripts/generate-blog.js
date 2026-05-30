@@ -292,6 +292,7 @@ ESTRUCTURA REQUERIDA DEL HTML:
 - Favicon: ../../logo.png
 - Google Fonts: Orbitron + DM Sans (igual que el sitio)
 - Schema.org Article JSON-LD con datePublished="${dateStr}", dateModified="${dateStr}", author Organization "AI Company CO". OBLIGATORIO incluir campo "image": {"@type":"ImageObject","url":"https://aicompanyco.com/logo.png","width":400,"height":400} dentro del schema Article.
+- Schema.org FAQPage JSON-LD adicional (segundo bloque <script type="application/ld+json">) con las mismas 4 preguntas frecuentes del artículo en formato {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Pregunta?","acceptedAnswer":{"@type":"Answer","text":"Respuesta."}},...]}.
 - CSS inline con estas variables: --purple-dark:#5A00B8; --purple-light:#9B5FFF; --bg:#0D0D14; --bg2:#12121C; --text:#E8E8F0; --text-muted:#8A8D99;
 - Clases CSS iguales al sitio: .container (max-width:760px), .hero, .post-category, .post-meta, .article-body, .callout, .cta-inline, .btn-wa, .breadcrumb, .use-case (opcional)
 - NAV fijo con link a ../../index_con_logo.html y botón "Hablemos →" a ../../index_con_logo.html#contacto

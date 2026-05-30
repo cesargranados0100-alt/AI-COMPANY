@@ -42,6 +42,23 @@
 }
 </script>
 <style>
+    .related-section { margin: 2.5rem 0; padding: 1.5rem; background: #12121C; border-radius: 14px; border: 1px solid #1E1E2E; }
+    .related-title { color: #9B5FFF; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .related-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+    .rel-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: #0D0D14; border-radius: 8px; border: 1px solid #1E1E2E; text-decoration: none; color: #E8E8F0; transition: border-color 0.2s; }
+    .rel-card:hover { border-color: rgba(155,95,255,0.4); text-decoration: none; }
+    .rel-emoji { font-size: 1.2rem; flex-shrink: 0; }
+    .rel-titulo { flex: 1; font-size: 0.9rem; font-weight: 500; }
+    .rel-arrow { color: #9B5FFF; flex-shrink: 0; }
+    .faq-section { margin: 3rem 0; padding: 2rem; background: #12121C; border-radius: 16px; border: 1px solid rgba(90,0,184,0.2); }
+    .faq-title { color: #9B5FFF; font-size: 1.6rem; margin-bottom: 1.5rem; font-family: 'Orbitron', sans-serif; }
+    .faq-item { margin-bottom: 0.75rem; background: #0D0D14; border-radius: 10px; border: 1px solid rgba(155,95,255,0.15); overflow: hidden; }
+    .faq-item[open] { border-color: rgba(155,95,255,0.4); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; color: #E8E8F0; font-weight: 600; cursor: pointer; list-style: none; font-size: 0.97rem; gap: 1rem; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-icon { color: #9B5FFF; font-size: 1.4rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-a { padding: 0 1.25rem 1rem; color: #8A8D99; line-height: 1.7; font-size: 0.94rem; margin: 0; }
   :root {
     --purple-dark: #5A00B8;
     --purple-light: #9B5FFF;
@@ -98,6 +115,46 @@
     .btn-wa { display: block; text-align: center; }
   }
 </style>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es n8n y para qué sirve en un negocio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "n8n es una plataforma de automatización de flujos de trabajo que conecta aplicaciones y servicios sin necesidad de programar. Permite automatizar tareas repetitivas como: enviar emails cuando alguien llena un formulario, actualizar hojas de Excel con datos de ventas, publicar en redes sociales automáticamente, o notificar por WhatsApp cuando llega un pedido. Es como un puente entre todas las herramientas de tu negocio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿n8n es gratis o de pago?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "n8n tiene versión de código abierto completamente gratuita que puedes instalar en tu propio servidor (costo de servidor: $50.000-$150.000 COP mensuales en DigitalOcean o Railway). La versión en la nube (n8n.io) tiene plan gratuito con 5.000 ejecuciones mensuales y planes de pago desde $20 USD/mes. Para negocios colombianos, la versión self-hosted es la más popular por el control de datos y costo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito saber programar para usar n8n?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No necesariamente. n8n usa una interfaz visual de arrastrar y soltar para crear automatizaciones. Sin embargo, para automatizaciones avanzadas (transformar datos, condiciones complejas, llamadas a APIs) se necesitan conocimientos básicos de JavaScript y JSON. El 80% de los casos de uso de negocios se pueden resolver sin escribir código."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué automatizaciones concretas puede hacer n8n para un negocio colombiano?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Casos reales: 1) Cuando llega un lead en el formulario web, crear contacto en CRM + enviar WhatsApp de bienvenida + notificar al equipo de ventas. 2) Cada vez que se registra una venta en Shopify, actualizar inventario en Excel y enviar factura por email. 3) Publicar automáticamente en Instagram y Facebook cuando se sube un post al blog. 4) Generar informe semanal de ventas y enviarlo por correo cada lunes."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -248,7 +305,49 @@
     </div>
 
   </div>
-</main>
+
+  
+  <section class="related-section">
+    <h3 class="related-title">Artículos Relacionados</h3>
+    <div class="related-grid">
+      <a href="../como-automatizar-whatsapp-business-colombia/" class="rel-card">
+        <span class="rel-emoji">💬</span>
+        <span class="rel-titulo">Automatiza WhatsApp con n8n</span>
+        <span class="rel-arrow">→</span>
+      </a>
+      <a href="../automatizacion-procesos-constructoras-colombia/" class="rel-card">
+        <span class="rel-emoji">🏗️</span>
+        <span class="rel-titulo">Casos Reales de Automatización</span>
+        <span class="rel-arrow">→</span>
+      </a>
+      <a href="../facturacion-electronica-automatica-colombia/" class="rel-card">
+        <span class="rel-emoji">🧾</span>
+        <span class="rel-titulo">Automatizar Facturación con n8n</span>
+        <span class="rel-arrow">→</span>
+      </a>
+    </div>
+  </section>
+  <section class="faq-section" id="preguntas-frecuentes">
+    <h2 class="faq-title">Preguntas Frecuentes</h2>
+    
+    <details class="faq-item">
+      <summary class="faq-q">¿Qué es n8n y para qué sirve en un negocio?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">n8n es una plataforma de automatización de flujos de trabajo que conecta aplicaciones y servicios sin necesidad de programar. Permite automatizar tareas repetitivas como: enviar emails cuando alguien llena un formulario, actualizar hojas de Excel con datos de ventas, publicar en redes sociales automáticamente, o notificar por WhatsApp cuando llega un pedido. Es como un puente entre todas las herramientas de tu negocio.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿n8n es gratis o de pago?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">n8n tiene versión de código abierto completamente gratuita que puedes instalar en tu propio servidor (costo de servidor: $50.000-$150.000 COP mensuales en DigitalOcean o Railway). La versión en la nube (n8n.io) tiene plan gratuito con 5.000 ejecuciones mensuales y planes de pago desde $20 USD/mes. Para negocios colombianos, la versión self-hosted es la más popular por el control de datos y costo.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Necesito saber programar para usar n8n?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">No necesariamente. n8n usa una interfaz visual de arrastrar y soltar para crear automatizaciones. Sin embargo, para automatizaciones avanzadas (transformar datos, condiciones complejas, llamadas a APIs) se necesitan conocimientos básicos de JavaScript y JSON. El 80% de los casos de uso de negocios se pueden resolver sin escribir código.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Qué automatizaciones concretas puede hacer n8n para un negocio colombiano?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">Casos reales: 1) Cuando llega un lead en el formulario web, crear contacto en CRM + enviar WhatsApp de bienvenida + notificar al equipo de ventas. 2) Cada vez que se registra una venta en Shopify, actualizar inventario en Excel y enviar factura por email. 3) Publicar automáticamente en Instagram y Facebook cuando se sube un post al blog. 4) Generar informe semanal de ventas y enviarlo por correo cada lunes.</p>
+    </details>
+  </section>
+  </main>
 
 <footer style="background:#0D0D14;border-top:1px solid rgba(255,255,255,0.06);padding:2rem 5%;text-align:center;">
   <p style="font-size:0.78rem;color:#8A8D99;">© 2025 AI Company CO · <a href="/politica-de-privacidad/" style="color:#9B5FFF;">Privacidad</a> · <a href="/terminos-y-condiciones/" style="color:#9B5FFF;">Términos</a> · <a href="/tratamiento-de-datos/" style="color:#9B5FFF;">Tratamiento de datos</a></p>

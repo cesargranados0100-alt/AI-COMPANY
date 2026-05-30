@@ -1,0 +1,425 @@
+#!/usr/bin/env node
+/**
+ * Generates city-specific landing pages for aicompanyco.com
+ * Targets low-competition local keywords: "agencia ia bogotá", etc.
+ * Run: node scripts/generate-city-pages.js
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const ROOT = path.resolve(__dirname, '..');
+
+const CITIES = [
+  {
+    slug: 'bogota',
+    name: 'Bogotá',
+    region: 'Cundinamarca',
+    desc: 'capital de Colombia y principal hub financiero del país',
+    economia: 'servicios financieros, tecnología, salud y comercio',
+    zonas: 'Chapinero, Salitre, Zona Rosa, Usaquén y el Centro Financiero',
+    empresas: 'más de 280.000 empresas registradas en la Cámara de Comercio de Bogotá',
+    lema: 'La capital más grande de Colombia merece la tecnología más avanzada.',
+    tel: '+57 321 267 4754',
+    wa: '573212674754',
+  },
+  {
+    slug: 'medellin',
+    name: 'Medellín',
+    region: 'Antioquia',
+    desc: 'ciudad de la innovación y hub tecnológico de Colombia',
+    economia: 'tecnología, textiles, manufactura, turismo y servicios',
+    zonas: 'El Poblado, Laureles, Envigado, Rionegro y el Distrito de Innovación',
+    empresas: 'más de 160.000 empresas en el Valle de Aburrá',
+    lema: 'Medellín lidera la transformación digital en Colombia. Tu empresa también puede.',
+    tel: '+57 321 267 4754',
+    wa: '573212674754',
+  },
+  {
+    slug: 'cali',
+    name: 'Cali',
+    region: 'Valle del Cauca',
+    desc: 'capital económica del suroccidente colombiano',
+    economia: 'agroindustria, azúcar, servicios, manufactura y logística',
+    zonas: 'Ciudad Jardín, El Peñón, Granada, Chipichape y la Zona Industrial',
+    empresas: 'más de 120.000 empresas en el Valle del Cauca',
+    lema: 'El suroccidente colombiano también merece soluciones digitales de primer nivel.',
+    tel: '+57 321 267 4754',
+    wa: '573212674754',
+  },
+  {
+    slug: 'barranquilla',
+    name: 'Barranquilla',
+    region: 'Atlántico',
+    desc: 'puerta de oro de Colombia y principal puerto del Caribe',
+    economia: 'comercio internacional, logística, manufactura y servicios',
+    zonas: 'El Golf, Prado, Buenavista, Puerto Colombia y la Zona Franca',
+    empresas: 'más de 80.000 empresas en el Atlántico',
+    lema: 'Barranquilla crece más rápido que nunca. Tu empresa también puede crecer con IA.',
+    tel: '+57 321 267 4754',
+    wa: '573212674754',
+  },
+  {
+    slug: 'bucaramanga',
+    name: 'Bucaramanga',
+    region: 'Santander',
+    desc: 'ciudad bonita y centro económico del oriente colombiano',
+    economia: 'petróleo, agricultura, calzado, joyería y servicios',
+    zonas: 'Cabecera del Llano, Cañaveral, Lagos, Floridablanca y Piedecuesta',
+    empresas: 'más de 60.000 empresas en el Área Metropolitana',
+    lema: 'La Ciudad Bonita ahora también puede tener los sistemas más inteligentes.',
+    tel: '+57 321 267 4754',
+    wa: '573212674754',
+  },
+];
+
+const SHARED_CSS = `
+    :root {
+      --purple-dark: #5A00B8;
+      --purple-light: #9B5FFF;
+      --bg: #0D0D14;
+      --bg2: #12121C;
+      --text: #E8E8F0;
+      --text-muted: #8A8D99;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.7; }
+    a { color: var(--purple-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid #1E1E2E; position: sticky; top: 0; background: var(--bg); z-index: 100; }
+    .nav-logo { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--text); }
+    .nav-links { display: flex; gap: 1.5rem; font-size: 0.9rem; }
+
+    /* HERO */
+    .hero { text-align: center; padding: 5rem 2rem 3rem; max-width: 860px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: rgba(155,95,255,0.15); border: 1px solid rgba(155,95,255,0.4); color: var(--purple-light); padding: 0.35rem 1rem; border-radius: 999px; font-size: 0.8rem; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.2; margin-bottom: 1.25rem; }
+    .hero h1 span { color: var(--purple-light); }
+    .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 680px; margin: 0 auto 2rem; }
+    .hero-cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn-primary { background: var(--purple-dark); color: #fff; padding: 0.9rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--purple-light); text-decoration: none; }
+    .btn-ghost { border: 1px solid rgba(155,95,255,0.4); color: var(--purple-light); padding: 0.9rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; }
+    .btn-ghost:hover { background: rgba(155,95,255,0.1); text-decoration: none; }
+
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; max-width: 860px; margin: 0 auto 4rem; padding: 0 2rem; }
+    .stat { text-align: center; padding: 1.5rem; background: var(--bg2); border-radius: 12px; border: 1px solid #1E1E2E; }
+    .stat-num { font-family: 'Orbitron', sans-serif; font-size: 2rem; font-weight: 900; color: var(--purple-light); }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+    /* SERVICES */
+    .section { max-width: 1080px; margin: 0 auto 4rem; padding: 0 2rem; }
+    .section-title { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .section-sub { color: var(--text-muted); margin-bottom: 2rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--bg2); border: 1px solid #1E1E2E; border-radius: 16px; padding: 1.75rem; transition: border-color 0.2s; }
+    .card:hover { border-color: rgba(155,95,255,0.4); }
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .card p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* WHY */
+    .why { background: var(--bg2); padding: 3rem 2rem; }
+    .why-inner { max-width: 1080px; margin: 0 auto; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .why-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .why-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .why-item h4 { font-weight: 600; margin-bottom: 0.25rem; }
+    .why-item p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* FAQ */
+    .faq-section { max-width: 860px; margin: 0 auto 4rem; padding: 0 2rem; }
+    .faq-title { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .faq-item { background: var(--bg2); border: 1px solid #1E1E2E; border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; }
+    .faq-item[open] { border-color: rgba(155,95,255,0.4); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; color: var(--text); font-weight: 600; cursor: pointer; list-style: none; gap: 1rem; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-icon { color: var(--purple-light); font-size: 1.4rem; flex-shrink: 0; }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-a { padding: 0 1.25rem 1rem; color: var(--text-muted); line-height: 1.7; font-size: 0.94rem; margin: 0; }
+
+    /* CTA */
+    .cta-section { text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(90,0,184,0.2), rgba(155,95,255,0.1)); border-top: 1px solid #1E1E2E; border-bottom: 1px solid #1E1E2E; }
+    .cta-section h2 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; }
+    .cta-section p { color: var(--text-muted); max-width: 580px; margin: 0 auto 2rem; }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid #1E1E2E; }
+    footer a { color: var(--text-muted); }`;
+
+function generateCityPage(city) {
+  const title = `Agencia de IA y Automatización en ${city.name} | AI Company CO`;
+  const metaDesc = `Implementamos chatbots, automatizaciones y sistemas digitales para empresas en ${city.name}, ${city.region}. Resultados desde la primera semana. ¡Cotiza gratis!`;
+  const canonical = `https://aicompanyco.com/${city.slug}/`;
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'AI Company CO',
+    description: `Agencia de automatización, inteligencia artificial y marketing digital para empresas en ${city.name}, Colombia.`,
+    url: canonical,
+    telephone: city.tel,
+    image: 'https://aicompanyco.com/logo.png',
+    logo: 'https://aicompanyco.com/logo.png',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: city.name,
+      addressRegion: city.region,
+      addressCountry: 'CO',
+    },
+    areaServed: { '@type': 'City', name: city.name },
+    serviceType: ['Chatbot con IA', 'Automatización de WhatsApp', 'Marketing Digital', 'Páginas Web', 'Apps Empresariales'],
+    priceRange: '$$',
+    openingHours: 'Mo-Fr 08:00-18:00',
+    sameAs: ['https://aicompanyco.com'],
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `¿AI Company CO tiene oficina en ${city.name}?`,
+        acceptedAnswer: { '@type': 'Answer', text: `Atendemos empresas en ${city.name} y toda Colombia de forma 100% remota y presencial según la necesidad. Nuestro equipo se desplaza para implementaciones complejas. Contáctenos por WhatsApp para coordinar una reunión.` },
+      },
+      {
+        '@type': 'Question',
+        name: `¿Cuánto cuesta contratar una agencia de automatización en ${city.name}?`,
+        acceptedAnswer: { '@type': 'Answer', text: `Los proyectos para empresas en ${city.name} parten desde $2.500.000 COP para automatizaciones básicas de WhatsApp hasta $30.000.000 COP para sistemas empresariales completos. Ofrecemos cotización gratuita y sin compromiso en 24 horas hábiles.` },
+      },
+      {
+        '@type': 'Question',
+        name: `¿Qué servicios de IA ofrecen para empresas en ${city.name}?`,
+        acceptedAnswer: { '@type': 'Answer', text: `Para empresas en ${city.name} implementamos: chatbots con IA para atención al cliente, automatización de WhatsApp Business, sistemas de gestión a la medida, páginas web con SEO, marketing digital con pauta, y aplicaciones móviles. Todos los proyectos incluyen soporte post-implementación.` },
+      },
+      {
+        '@type': 'Question',
+        name: `¿Cuánto tiempo tarda implementar un sistema de IA en ${city.name}?`,
+        acceptedAnswer: { '@type': 'Answer', text: `Los proyectos básicos (chatbot o automatización de WhatsApp) están listos en 1-3 semanas. Los sistemas empresariales completos tardan 6-12 semanas. Trabajamos con metodología ágil y entregamos avances semanales para que el cliente vea el progreso desde el primer día.` },
+      },
+    ],
+  };
+
+  return `<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${title}</title>
+  <meta name="description" content="${metaDesc}" />
+  <link rel="canonical" href="${canonical}" />
+  <link rel="icon" href="../logo.png" type="image/png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="${title}" />
+  <meta property="og:description" content="${metaDesc}" />
+  <meta property="og:url" content="${canonical}" />
+  <meta property="og:image" content="https://aicompanyco.com/logo.png" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:site_name" content="AI Company CO" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${title}" />
+  <meta name="twitter:description" content="${metaDesc}" />
+  <meta name="twitter:image" content="https://aicompanyco.com/logo.png" />
+
+  <script type="application/ld+json">
+  ${JSON.stringify(schema, null, 2)}
+  </script>
+  <script type="application/ld+json">
+  ${JSON.stringify(faqSchema, null, 2)}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>${SHARED_CSS}</style>
+</head>
+<body>
+
+<nav>
+  <a href="../" class="nav-logo">AI Company CO</a>
+  <div class="nav-links">
+    <a href="../blog/">Blog</a>
+    <a href="../#servicios">Servicios</a>
+    <a href="https://wa.me/${city.wa}?text=Hola%2C%20quiero%20información%20de%20sus%20servicios%20en%20${encodeURIComponent(city.name)}" target="_blank">WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="hero-badge">📍 ${city.name}, ${city.region}</span>
+  <h1>Automatización e <span>Inteligencia Artificial</span> para Empresas en ${city.name}</h1>
+  <p>${city.lema} Implementamos chatbots, WhatsApp automático, sistemas a la medida y marketing digital para las empresas de ${city.name} y ${city.region}.</p>
+  <div class="hero-cta">
+    <a href="https://wa.me/${city.wa}?text=Hola%2C%20soy%20de%20${encodeURIComponent(city.name)}%20y%20quiero%20información%20sobre%20automatización%20para%20mi%20empresa" target="_blank" class="btn-primary">💬 Cotiza gratis por WhatsApp</a>
+    <a href="../blog/" class="btn-ghost">Ver casos de éxito →</a>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">+50</div>
+    <div class="stat-label">Empresas colombianas implementadas</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">72h</div>
+    <div class="stat-label">Primer entregable garantizado</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">60%</div>
+    <div class="stat-label">Reducción promedio en tareas manuales</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Soporte post-implementación</div>
+  </div>
+</div>
+
+<section class="section" id="servicios">
+  <h2 class="section-title">Servicios para Empresas en ${city.name}</h2>
+  <p class="section-sub">${city.name} es la ${city.desc} con ${city.empresas}. Llevamos tecnología de punta a sus negocios locales.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🤖</div>
+      <h3>Chatbot con IA en ${city.name}</h3>
+      <p>Chatbots entrenados con IA que atienden clientes 24/7, responden preguntas, cierran ventas y agendan citas. Integración con WhatsApp, Instagram y web.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <h3>WhatsApp Automático</h3>
+      <p>Automatizamos WhatsApp Business API para que tu empresa en ${city.name} reciba pedidos, envíe cotizaciones y haga seguimiento sin intervención manual.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>Marketing Digital en ${city.name}</h3>
+      <p>Campañas en Google Ads, Meta Ads y TikTok segmentadas para ${city.zonas}. Resultados medibles desde la primera semana.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <h3>Páginas Web Profesionales</h3>
+      <p>Diseño y desarrollo web con SEO local para aparecer cuando buscan tu servicio en ${city.name}. Optimizadas para mobile y velocidad.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <h3>Apps Empresariales</h3>
+      <p>Aplicaciones móviles y sistemas de gestión a la medida para empresas en ${city.name}: inventario, domicilios, citas, CRM y más.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Automatización de Procesos</h3>
+      <p>Conectamos tus herramientas (WhatsApp, email, CRM, contabilidad) en flujos automáticos. Elimina el trabajo manual repetitivo.</p>
+    </div>
+  </div>
+</section>
+
+<div class="why">
+  <div class="why-inner">
+    <h2 class="section-title">¿Por qué elegir AI Company CO en ${city.name}?</h2>
+    <p class="section-sub">Conocemos la economía de ${city.region}: ${city.economia}. Nuestras soluciones están adaptadas al mercado local.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="why-icon">🇨🇴</span>
+        <div>
+          <h4>Colombianos que entienden tu mercado</h4>
+          <p>Sabemos cómo funciona el tejido empresarial de ${city.name} y ${city.region}. No somos un template extranjero.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">⚡</span>
+        <div>
+          <h4>Entregamos en semanas, no en meses</h4>
+          <p>Metodología ágil con entregables semanales. En 72 horas ya tienes un primer prototipo funcional.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">💰</span>
+        <div>
+          <h4>Precios en pesos colombianos</h4>
+          <p>Sin sorpresas por devaluación. Todos nuestros proyectos se cotizan y cobran en COP.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">📞</span>
+        <div>
+          <h4>Soporte directo por WhatsApp</h4>
+          <p>Hablas con el equipo técnico, no con un call center. Respuesta en menos de 4 horas hábiles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="faq-section" style="padding-top: 4rem;">
+  <h2 class="faq-title">Preguntas Frecuentes — ${city.name}</h2>
+
+  <details class="faq-item">
+    <summary class="faq-q">¿AI Company CO tiene oficina en ${city.name}?<span class="faq-icon">+</span></summary>
+    <p class="faq-a">Atendemos empresas en ${city.name} y toda Colombia de forma remota y presencial según la necesidad. Nuestro equipo se desplaza para implementaciones complejas en ${city.name} y ${city.region}. Contáctenos por WhatsApp para coordinar una reunión virtual o presencial.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q">¿Cuánto cuesta contratar una agencia de IA en ${city.name}?<span class="faq-icon">+</span></summary>
+    <p class="faq-a">Los proyectos para empresas en ${city.name} parten desde $2.500.000 COP para automatizaciones básicas de WhatsApp, hasta $30.000.000 COP para sistemas empresariales completos. Ofrecemos cotización gratuita y sin compromiso en 24 horas hábiles.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q">¿Qué sectores de ${city.name} han implementado IA con ustedes?<span class="faq-icon">+</span></summary>
+    <p class="faq-a">Hemos implementado soluciones para restaurantes, clínicas, talleres mecánicos, ferreterías, hoteles, constructoras, supermercados y agencias de marketing en toda Colombia, incluyendo ${city.name}. Adaptamos cada solución a las particularidades del mercado de ${city.region}.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q">¿Cuánto tiempo tarda implementar automatización en mi empresa en ${city.name}?<span class="faq-icon">+</span></summary>
+    <p class="faq-a">Los proyectos básicos (chatbot o WhatsApp automático) están listos en 1-3 semanas. Los sistemas empresariales completos tardan 6-12 semanas. Trabajamos con metodología ágil y tienes un prototipo funcional en los primeros 3 días.</p>
+  </details>
+</section>
+
+<div class="cta-section">
+  <h2>¿Tu empresa en ${city.name} está lista para el siguiente nivel?</h2>
+  <p>Más de 50 empresas colombianas ya automatizaron sus procesos con AI Company CO. La tuya puede ser la siguiente.</p>
+  <a href="https://wa.me/${city.wa}?text=Hola%2C%20soy%20de%20${encodeURIComponent(city.name)}%20y%20quiero%20automatizar%20mi%20empresa%20con%20IA" target="_blank" class="btn-primary">💬 Hablar con un experto en ${city.name}</a>
+</div>
+
+<footer>
+  <p>© 2026 AI Company CO — Agencia de Automatización e Inteligencia Artificial para Colombia</p>
+  <p style="margin-top: 0.5rem;">
+    <a href="../">Inicio</a> · <a href="../blog/">Blog</a> · <a href="../#servicios">Servicios</a> ·
+    <a href="../bogota/">Bogotá</a> · <a href="../medellin/">Medellín</a> · <a href="../cali/">Cali</a> ·
+    <a href="../barranquilla/">Barranquilla</a> · <a href="../bucaramanga/">Bucaramanga</a>
+  </p>
+</footer>
+
+</body>
+</html>`;
+}
+
+// ─── main ────────────────────────────────────────────────────────────────────
+
+CITIES.forEach(city => {
+  const dir = path.join(ROOT, city.slug);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+  const html = generateCityPage(city);
+  fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
+  console.log(`✓ /${city.slug}/ → ${city.name}`);
+});
+
+// Update sitemap-main.xml with city pages
+const SITEMAP = path.join(ROOT, 'sitemap-main.xml');
+const today = new Date().toISOString().split('T')[0];
+
+if (fs.existsSync(SITEMAP)) {
+  let xml = fs.readFileSync(SITEMAP, 'utf8');
+  CITIES.forEach(city => {
+    const url = `https://aicompanyco.com/${city.slug}/`;
+    if (!xml.includes(url)) {
+      const entry = `  <url>\n    <loc>${url}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
+      xml = xml.replace('</urlset>', `${entry}\n</urlset>`);
+    }
+  });
+  fs.writeFileSync(SITEMAP, xml, 'utf8');
+  console.log('\n✓ sitemap-main.xml actualizado con páginas de ciudades');
+}
+
+console.log('\nListo. 5 páginas de ciudades generadas.');

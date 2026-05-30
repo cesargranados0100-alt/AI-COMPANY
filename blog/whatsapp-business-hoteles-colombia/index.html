@@ -48,6 +48,23 @@
   </script>
 
   <style>
+    .related-section { margin: 2.5rem 0; padding: 1.5rem; background: #12121C; border-radius: 14px; border: 1px solid #1E1E2E; }
+    .related-title { color: #9B5FFF; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .related-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+    .rel-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: #0D0D14; border-radius: 8px; border: 1px solid #1E1E2E; text-decoration: none; color: #E8E8F0; transition: border-color 0.2s; }
+    .rel-card:hover { border-color: rgba(155,95,255,0.4); text-decoration: none; }
+    .rel-emoji { font-size: 1.2rem; flex-shrink: 0; }
+    .rel-titulo { flex: 1; font-size: 0.9rem; font-weight: 500; }
+    .rel-arrow { color: #9B5FFF; flex-shrink: 0; }
+    .faq-section { margin: 3rem 0; padding: 2rem; background: #12121C; border-radius: 16px; border: 1px solid rgba(90,0,184,0.2); }
+    .faq-title { color: #9B5FFF; font-size: 1.6rem; margin-bottom: 1.5rem; font-family: 'Orbitron', sans-serif; }
+    .faq-item { margin-bottom: 0.75rem; background: #0D0D14; border-radius: 10px; border: 1px solid rgba(155,95,255,0.15); overflow: hidden; }
+    .faq-item[open] { border-color: rgba(155,95,255,0.4); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; color: #E8E8F0; font-weight: 600; cursor: pointer; list-style: none; font-size: 0.97rem; gap: 1rem; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-icon { color: #9B5FFF; font-size: 1.4rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-a { padding: 0 1.25rem 1rem; color: #8A8D99; line-height: 1.7; font-size: 0.94rem; margin: 0; }
     :root {
       --purple-dark: #5A00B8;
       --purple-light: #9B5FFF;
@@ -409,6 +426,46 @@
       .callout .callout-stat { font-size: 1.6rem; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo puede un hotel usar WhatsApp Business para recibir más reservas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un hotel puede configurar WhatsApp Business API para responder consultas de precios automáticamente, enviar disponibilidad en tiempo real, procesar pre-reservas y cobrar pagos por link. Los hoteles colombianos que automatizan WhatsApp reportan aumento del 25-35% en reservas directas, evitando la comisión del 15-20% de Booking.com o Airbnb."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta automatizar WhatsApp para un hotel en Colombia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un sistema de WhatsApp automatizado para hotel cuesta entre $2.500.000 y $6.000.000 COP en implementación más $500.000-$1.500.000 mensuales de operación. La API oficial de WhatsApp Business cobra aproximadamente $60-$80 COP por mensaje de conversación iniciada. Para un hotel con 50 conversaciones diarias el costo mensual de mensajes es de $90.000-$120.000 COP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué mensajes automáticos debe tener un hotel en WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los mensajes más efectivos son: confirmación de reserva con detalles e indicaciones, check-in express (enviar habitación y contraseña Wi-Fi), recordatorio 24 horas antes de llegada, mensaje de bienvenida al hacer check-in, y encuesta de satisfacción al salir. Estos 5 mensajes automáticos mejoran la reseña promedio en Google en 0.3-0.7 puntos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿WhatsApp automático puede reemplazar a un recepcionista en un hotel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No completamente, pero sí puede manejar el 70-80% de las consultas rutinarias: preguntas de precios, disponibilidad, servicios y acceso. El recepcionista puede concentrarse en la atención personalizada y casos especiales. Esto permite que hoteles boutique operen con menos personal sin sacrificar calidad de servicio."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 

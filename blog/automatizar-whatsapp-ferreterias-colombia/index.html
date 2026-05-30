@@ -28,6 +28,23 @@
 }
 </script>
 <style>
+    .related-section { margin: 2.5rem 0; padding: 1.5rem; background: #12121C; border-radius: 14px; border: 1px solid #1E1E2E; }
+    .related-title { color: #9B5FFF; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .related-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+    .rel-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: #0D0D14; border-radius: 8px; border: 1px solid #1E1E2E; text-decoration: none; color: #E8E8F0; transition: border-color 0.2s; }
+    .rel-card:hover { border-color: rgba(155,95,255,0.4); text-decoration: none; }
+    .rel-emoji { font-size: 1.2rem; flex-shrink: 0; }
+    .rel-titulo { flex: 1; font-size: 0.9rem; font-weight: 500; }
+    .rel-arrow { color: #9B5FFF; flex-shrink: 0; }
+    .faq-section { margin: 3rem 0; padding: 2rem; background: #12121C; border-radius: 16px; border: 1px solid rgba(90,0,184,0.2); }
+    .faq-title { color: #9B5FFF; font-size: 1.6rem; margin-bottom: 1.5rem; font-family: 'Orbitron', sans-serif; }
+    .faq-item { margin-bottom: 0.75rem; background: #0D0D14; border-radius: 10px; border: 1px solid rgba(155,95,255,0.15); overflow: hidden; }
+    .faq-item[open] { border-color: rgba(155,95,255,0.4); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; color: #E8E8F0; font-weight: 600; cursor: pointer; list-style: none; font-size: 0.97rem; gap: 1rem; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-icon { color: #9B5FFF; font-size: 1.4rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-a { padding: 0 1.25rem 1rem; color: #8A8D99; line-height: 1.7; font-size: 0.94rem; margin: 0; }
   :root { --purple-dark:#5A00B8; --purple-light:#9B5FFF; --bg:#0D0D14; --bg2:#12121C; --text:#E8E8F0; --text-muted:#8A8D99; --border:rgba(90,0,184,0.18); }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; line-height:1.8; }
@@ -60,6 +77,46 @@
   .flow-step strong { color:var(--text); display:block; margin-bottom:0.2rem; }
   @media(max-width:768px){ nav span{display:none} .hero{padding:6rem 5% 2rem} .article-body{padding:0 5% 3rem} .breadcrumb{padding:5rem 5% 0} }
 </style>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo puede una ferretería automatizar sus pedidos por WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una ferretería puede configurar WhatsApp Business API para recibir pedidos automáticamente: el cliente escribe el producto, el bot consulta el inventario en tiempo real, confirma precio y disponibilidad, y genera la orden. También puede enviar catálogos PDF automáticamente y hacer seguimiento del pedido. Ferreterías en Colombia con este sistema atienden pedidos a cualquier hora sin personal adicional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta un sistema de pedidos por WhatsApp para ferretería?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un sistema de WhatsApp automatizado para ferretería en Colombia cuesta entre $3.000.000 y $8.000.000 COP en implementación inicial, más $500.000-$1.200.000 COP mensuales. El costo depende principalmente de si se integra con el sistema de inventario existente. La mayoría de ferreterías recuperan la inversión en 4-6 meses por aumento de pedidos y reducción de llamadas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿WhatsApp automático funciona para ferreterías con miles de referencias?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, siempre que el sistema esté integrado con el inventario. El bot puede buscar productos por nombre, código o categoría y mostrar disponibilidad en tiempo real. Para catálogos muy grandes, se usan menús por categoría (tornillería, eléctrico, plomería) que el cliente navega desde WhatsApp. Esta navegación reduce el tiempo de pedido de 10 minutos a 2-3 minutos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito cambiar mi número de WhatsApp para automatizarlo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No necesariamente. Con WhatsApp Business API oficial puedes mantener tu número actual (si es una línea móvil o fija). Sin embargo, si ya lo usas en la app normal de WhatsApp Business, hay un proceso de migración. Lo importante es que el número quede registrado en Meta Business Suite. Este proceso tarda entre 3 y 7 días hábiles."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -227,7 +284,49 @@
     </div>
 
   </div>
-</main>
+
+  
+  <section class="related-section">
+    <h3 class="related-title">Artículos Relacionados</h3>
+    <div class="related-grid">
+      <a href="../como-automatizar-whatsapp-business-colombia/" class="rel-card">
+        <span class="rel-emoji">💬</span>
+        <span class="rel-titulo">Guía Completa WhatsApp Business API</span>
+        <span class="rel-arrow">→</span>
+      </a>
+      <a href="../cuanto-cuesta-chatbot-ia-colombia/" class="rel-card">
+        <span class="rel-emoji">💰</span>
+        <span class="rel-titulo">¿Cuánto Cuesta Automatizar mi Negocio?</span>
+        <span class="rel-arrow">→</span>
+      </a>
+      <a href="../sistema-gestion-talleres-mecanicos-colombia/" class="rel-card">
+        <span class="rel-emoji">⚙️</span>
+        <span class="rel-titulo">Sistema de Gestión para tu Negocio</span>
+        <span class="rel-arrow">→</span>
+      </a>
+    </div>
+  </section>
+  <section class="faq-section" id="preguntas-frecuentes">
+    <h2 class="faq-title">Preguntas Frecuentes</h2>
+    
+    <details class="faq-item">
+      <summary class="faq-q">¿Cómo puede una ferretería automatizar sus pedidos por WhatsApp?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">Una ferretería puede configurar WhatsApp Business API para recibir pedidos automáticamente: el cliente escribe el producto, el bot consulta el inventario en tiempo real, confirma precio y disponibilidad, y genera la orden. También puede enviar catálogos PDF automáticamente y hacer seguimiento del pedido. Ferreterías en Colombia con este sistema atienden pedidos a cualquier hora sin personal adicional.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Cuánto cuesta un sistema de pedidos por WhatsApp para ferretería?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">Un sistema de WhatsApp automatizado para ferretería en Colombia cuesta entre $3.000.000 y $8.000.000 COP en implementación inicial, más $500.000-$1.200.000 COP mensuales. El costo depende principalmente de si se integra con el sistema de inventario existente. La mayoría de ferreterías recuperan la inversión en 4-6 meses por aumento de pedidos y reducción de llamadas.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿WhatsApp automático funciona para ferreterías con miles de referencias?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">Sí, siempre que el sistema esté integrado con el inventario. El bot puede buscar productos por nombre, código o categoría y mostrar disponibilidad en tiempo real. Para catálogos muy grandes, se usan menús por categoría (tornillería, eléctrico, plomería) que el cliente navega desde WhatsApp. Esta navegación reduce el tiempo de pedido de 10 minutos a 2-3 minutos.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Necesito cambiar mi número de WhatsApp para automatizarlo?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">No necesariamente. Con WhatsApp Business API oficial puedes mantener tu número actual (si es una línea móvil o fija). Sin embargo, si ya lo usas en la app normal de WhatsApp Business, hay un proceso de migración. Lo importante es que el número quede registrado en Meta Business Suite. Este proceso tarda entre 3 y 7 días hábiles.</p>
+    </details>
+  </section>
+  </main>
 
 <footer style="background:#0a0a10;padding:40px 5% 24px;border-top:1px solid rgba(90,0,184,0.15);margin-top:2rem;">
   <div style="max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">

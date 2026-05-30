@@ -42,6 +42,23 @@
 }
 </script>
 <style>
+    .related-section { margin: 2.5rem 0; padding: 1.5rem; background: #12121C; border-radius: 14px; border: 1px solid #1E1E2E; }
+    .related-title { color: #9B5FFF; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .related-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+    .rel-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: #0D0D14; border-radius: 8px; border: 1px solid #1E1E2E; text-decoration: none; color: #E8E8F0; transition: border-color 0.2s; }
+    .rel-card:hover { border-color: rgba(155,95,255,0.4); text-decoration: none; }
+    .rel-emoji { font-size: 1.2rem; flex-shrink: 0; }
+    .rel-titulo { flex: 1; font-size: 0.9rem; font-weight: 500; }
+    .rel-arrow { color: #9B5FFF; flex-shrink: 0; }
+    .faq-section { margin: 3rem 0; padding: 2rem; background: #12121C; border-radius: 16px; border: 1px solid rgba(90,0,184,0.2); }
+    .faq-title { color: #9B5FFF; font-size: 1.6rem; margin-bottom: 1.5rem; font-family: 'Orbitron', sans-serif; }
+    .faq-item { margin-bottom: 0.75rem; background: #0D0D14; border-radius: 10px; border: 1px solid rgba(155,95,255,0.15); overflow: hidden; }
+    .faq-item[open] { border-color: rgba(155,95,255,0.4); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; color: #E8E8F0; font-weight: 600; cursor: pointer; list-style: none; font-size: 0.97rem; gap: 1rem; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-icon { color: #9B5FFF; font-size: 1.4rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-a { padding: 0 1.25rem 1rem; color: #8A8D99; line-height: 1.7; font-size: 0.94rem; margin: 0; }
   :root {
     --purple-dark: #5A00B8;
     --purple-light: #9B5FFF;
@@ -100,6 +117,46 @@
     .cost-row { flex-direction: column; gap: 0.2rem; }
   }
 </style>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre WhatsApp Business y WhatsApp Business API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WhatsApp Business es la app gratuita para pequeños negocios con respuestas automáticas básicas y catálogo. WhatsApp Business API es la versión para empresas que permite automatización avanzada, chatbots con IA, envío masivo de mensajes, integración con CRM y atención multi-agente. La API requiere aprobación de Meta y tiene costo según el volumen de mensajes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta la API de WhatsApp Business en Colombia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Meta cobra por conversación, no por mensaje individual. Las conversaciones de servicio (cliente inicia) cuestan aproximadamente $70-$85 COP cada una. Las conversaciones de marketing (empresa inicia) cuestan entre $120 y $180 COP. Para una empresa con 100 conversaciones diarias, el costo mensual de WhatsApp API es de $210.000-$510.000 COP más el costo del software proveedor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo automatizar WhatsApp sin perder mi número actual?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, puedes migrar tu número actual de WhatsApp Business a la API oficial. El proceso requiere: que el número no esté activo en WhatsApp personal, verificación de la empresa en Meta Business Suite, y un período de migración de 3-7 días. Durante la migración, el número no puede recibir llamadas de WhatsApp, solo mensajes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué tipo de mensajes se pueden automatizar en WhatsApp Business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se pueden automatizar: respuestas a preguntas frecuentes (precios, horarios, ubicación), confirmaciones de pedido o reserva, recordatorios de cita o pago, seguimiento de envío, encuestas de satisfacción post-compra, y campañas de re-engagement. Los mensajes de marketing masivo requieren plantillas aprobadas previamente por Meta."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -258,7 +315,49 @@
     </div>
 
   </div>
-</main>
+
+  
+  <section class="related-section">
+    <h3 class="related-title">Artículos Relacionados</h3>
+    <div class="related-grid">
+      <a href="../cuanto-cuesta-chatbot-ia-colombia/" class="rel-card">
+        <span class="rel-emoji">🤖</span>
+        <span class="rel-titulo">¿Cuánto Cuesta un Chatbot con IA?</span>
+        <span class="rel-arrow">→</span>
+      </a>
+      <a href="../automatizar-whatsapp-ferreterias-colombia/" class="rel-card">
+        <span class="rel-emoji">🔧</span>
+        <span class="rel-titulo">Caso Real: WhatsApp en Ferreterías</span>
+        <span class="rel-arrow">→</span>
+      </a>
+      <a href="../whatsapp-business-hoteles-colombia/" class="rel-card">
+        <span class="rel-emoji">🏨</span>
+        <span class="rel-titulo">Caso Real: WhatsApp en Hoteles</span>
+        <span class="rel-arrow">→</span>
+      </a>
+    </div>
+  </section>
+  <section class="faq-section" id="preguntas-frecuentes">
+    <h2 class="faq-title">Preguntas Frecuentes</h2>
+    
+    <details class="faq-item">
+      <summary class="faq-q">¿Qué diferencia hay entre WhatsApp Business y WhatsApp Business API?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">WhatsApp Business es la app gratuita para pequeños negocios con respuestas automáticas básicas y catálogo. WhatsApp Business API es la versión para empresas que permite automatización avanzada, chatbots con IA, envío masivo de mensajes, integración con CRM y atención multi-agente. La API requiere aprobación de Meta y tiene costo según el volumen de mensajes.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Cuánto cuesta la API de WhatsApp Business en Colombia?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">Meta cobra por conversación, no por mensaje individual. Las conversaciones de servicio (cliente inicia) cuestan aproximadamente $70-$85 COP cada una. Las conversaciones de marketing (empresa inicia) cuestan entre $120 y $180 COP. Para una empresa con 100 conversaciones diarias, el costo mensual de WhatsApp API es de $210.000-$510.000 COP más el costo del software proveedor.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Puedo automatizar WhatsApp sin perder mi número actual?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">Sí, puedes migrar tu número actual de WhatsApp Business a la API oficial. El proceso requiere: que el número no esté activo en WhatsApp personal, verificación de la empresa en Meta Business Suite, y un período de migración de 3-7 días. Durante la migración, el número no puede recibir llamadas de WhatsApp, solo mensajes.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Qué tipo de mensajes se pueden automatizar en WhatsApp Business?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">Se pueden automatizar: respuestas a preguntas frecuentes (precios, horarios, ubicación), confirmaciones de pedido o reserva, recordatorios de cita o pago, seguimiento de envío, encuestas de satisfacción post-compra, y campañas de re-engagement. Los mensajes de marketing masivo requieren plantillas aprobadas previamente por Meta.</p>
+    </details>
+  </section>
+  </main>
 
 <footer style="background:#0D0D14;border-top:1px solid rgba(255,255,255,0.06);padding:2rem 5%;text-align:center;">
   <p style="font-size:0.78rem;color:#8A8D99;">© 2025 AI Company CO · <a href="/politica-de-privacidad/" style="color:#9B5FFF;">Privacidad</a> · <a href="/terminos-y-condiciones/" style="color:#9B5FFF;">Términos</a> · <a href="/tratamiento-de-datos/" style="color:#9B5FFF;">Tratamiento de datos</a></p>

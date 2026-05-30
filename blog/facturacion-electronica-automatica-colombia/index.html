@@ -42,6 +42,23 @@
 }
 </script>
 <style>
+    .related-section { margin: 2.5rem 0; padding: 1.5rem; background: #12121C; border-radius: 14px; border: 1px solid #1E1E2E; }
+    .related-title { color: #9B5FFF; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .related-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+    .rel-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: #0D0D14; border-radius: 8px; border: 1px solid #1E1E2E; text-decoration: none; color: #E8E8F0; transition: border-color 0.2s; }
+    .rel-card:hover { border-color: rgba(155,95,255,0.4); text-decoration: none; }
+    .rel-emoji { font-size: 1.2rem; flex-shrink: 0; }
+    .rel-titulo { flex: 1; font-size: 0.9rem; font-weight: 500; }
+    .rel-arrow { color: #9B5FFF; flex-shrink: 0; }
+    .faq-section { margin: 3rem 0; padding: 2rem; background: #12121C; border-radius: 16px; border: 1px solid rgba(90,0,184,0.2); }
+    .faq-title { color: #9B5FFF; font-size: 1.6rem; margin-bottom: 1.5rem; font-family: 'Orbitron', sans-serif; }
+    .faq-item { margin-bottom: 0.75rem; background: #0D0D14; border-radius: 10px; border: 1px solid rgba(155,95,255,0.15); overflow: hidden; }
+    .faq-item[open] { border-color: rgba(155,95,255,0.4); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; color: #E8E8F0; font-weight: 600; cursor: pointer; list-style: none; font-size: 0.97rem; gap: 1rem; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-icon { color: #9B5FFF; font-size: 1.4rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-a { padding: 0 1.25rem 1rem; color: #8A8D99; line-height: 1.7; font-size: 0.94rem; margin: 0; }
   :root {
     --purple-dark: #5A00B8;
     --purple-light: #9B5FFF;
@@ -98,6 +115,46 @@
     .btn-wa { display: block; text-align: center; }
   }
 </style>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Es obligatoria la facturación electrónica para todos los negocios en Colombia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, desde 2023 la DIAN exige facturación electrónica para todos los contribuyentes inscritos en el régimen ordinario. Los pequeños negocios del régimen simple tienen plazos diferenciados. Quien factura sin el sistema electrónico puede enfrentar sanciones desde 1 UVT ($47.065 en 2026) por cada factura emitida incorrectamente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta un software de facturación electrónica en Colombia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los planes básicos para emprendedores cuestan entre $30.000 y $80.000 COP mensuales (Siigo, Alegra, Factúralos). Para medianas empresas con inventario y contabilidad integrada, los planes van de $150.000 a $500.000 COP mensuales. Las soluciones enterprise como SAP Business One para Colombia pueden costar $2.000.000-$5.000.000 COP mensuales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo se conecta el software de facturación con la DIAN?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El software debe estar habilitado por la DIAN como proveedor tecnológico autorizado. Al emitir una factura, el sistema la envía automáticamente a la DIAN en formato XML con firma digital, recibe la respuesta de validación (en segundos) y solo entonces puede enviarse al cliente. Todo este proceso es transparente para el usuario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo automatizar facturas recurrentes para clientes fijos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Los mejores sistemas de facturación electrónica permiten programar facturas recurrentes mensuales, quincenales o anuales que se generan y envían automáticamente a la DIAN y al cliente. Esto es especialmente útil para arriendos, suscripciones, servicios fijos y contratos de mantenimiento. Ahorra 2-4 horas semanales de trabajo administrativo."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -297,7 +354,49 @@
     </div>
 
   </div>
-</main>
+
+  
+  <section class="related-section">
+    <h3 class="related-title">Artículos Relacionados</h3>
+    <div class="related-grid">
+      <a href="../que-es-n8n-automatizacion-colombia/" class="rel-card">
+        <span class="rel-emoji">⚡</span>
+        <span class="rel-titulo">n8n: Automatiza Todo tu Negocio</span>
+        <span class="rel-arrow">→</span>
+      </a>
+      <a href="../automatizacion-procesos-constructoras-colombia/" class="rel-card">
+        <span class="rel-emoji">🏗️</span>
+        <span class="rel-titulo">Automatización para Empresas</span>
+        <span class="rel-arrow">→</span>
+      </a>
+      <a href="../cuanto-cuesta-chatbot-ia-colombia/" class="rel-card">
+        <span class="rel-emoji">💰</span>
+        <span class="rel-titulo">¿Cuánto Cuesta Automatizar?</span>
+        <span class="rel-arrow">→</span>
+      </a>
+    </div>
+  </section>
+  <section class="faq-section" id="preguntas-frecuentes">
+    <h2 class="faq-title">Preguntas Frecuentes</h2>
+    
+    <details class="faq-item">
+      <summary class="faq-q">¿Es obligatoria la facturación electrónica para todos los negocios en Colombia?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">Sí, desde 2023 la DIAN exige facturación electrónica para todos los contribuyentes inscritos en el régimen ordinario. Los pequeños negocios del régimen simple tienen plazos diferenciados. Quien factura sin el sistema electrónico puede enfrentar sanciones desde 1 UVT ($47.065 en 2026) por cada factura emitida incorrectamente.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Cuánto cuesta un software de facturación electrónica en Colombia?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">Los planes básicos para emprendedores cuestan entre $30.000 y $80.000 COP mensuales (Siigo, Alegra, Factúralos). Para medianas empresas con inventario y contabilidad integrada, los planes van de $150.000 a $500.000 COP mensuales. Las soluciones enterprise como SAP Business One para Colombia pueden costar $2.000.000-$5.000.000 COP mensuales.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Cómo se conecta el software de facturación con la DIAN?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">El software debe estar habilitado por la DIAN como proveedor tecnológico autorizado. Al emitir una factura, el sistema la envía automáticamente a la DIAN en formato XML con firma digital, recibe la respuesta de validación (en segundos) y solo entonces puede enviarse al cliente. Todo este proceso es transparente para el usuario.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Puedo automatizar facturas recurrentes para clientes fijos?<span class="faq-icon">+</span></summary>
+      <p class="faq-a">Sí. Los mejores sistemas de facturación electrónica permiten programar facturas recurrentes mensuales, quincenales o anuales que se generan y envían automáticamente a la DIAN y al cliente. Esto es especialmente útil para arriendos, suscripciones, servicios fijos y contratos de mantenimiento. Ahorra 2-4 horas semanales de trabajo administrativo.</p>
+    </details>
+  </section>
+  </main>
 
 <footer style="background:#0D0D14;border-top:1px solid rgba(255,255,255,0.06);padding:2rem 5%;text-align:center;">
   <p style="font-size:0.78rem;color:#8A8D99;">© 2025 AI Company CO · <a href="/politica-de-privacidad/" style="color:#9B5FFF;">Privacidad</a> · <a href="/terminos-y-condiciones/" style="color:#9B5FFF;">Términos</a> · <a href="/tratamiento-de-datos/" style="color:#9B5FFF;">Tratamiento de datos</a></p>

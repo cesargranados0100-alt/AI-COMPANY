@@ -51,6 +51,23 @@
   </script>
 
   <style>
+    .related-section { margin: 2.5rem 0; padding: 1.5rem; background: #12121C; border-radius: 14px; border: 1px solid #1E1E2E; }
+    .related-title { color: #9B5FFF; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .related-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+    .rel-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: #0D0D14; border-radius: 8px; border: 1px solid #1E1E2E; text-decoration: none; color: #E8E8F0; transition: border-color 0.2s; }
+    .rel-card:hover { border-color: rgba(155,95,255,0.4); text-decoration: none; }
+    .rel-emoji { font-size: 1.2rem; flex-shrink: 0; }
+    .rel-titulo { flex: 1; font-size: 0.9rem; font-weight: 500; }
+    .rel-arrow { color: #9B5FFF; flex-shrink: 0; }
+    .faq-section { margin: 3rem 0; padding: 2rem; background: #12121C; border-radius: 16px; border: 1px solid rgba(90,0,184,0.2); }
+    .faq-title { color: #9B5FFF; font-size: 1.6rem; margin-bottom: 1.5rem; font-family: 'Orbitron', sans-serif; }
+    .faq-item { margin-bottom: 0.75rem; background: #0D0D14; border-radius: 10px; border: 1px solid rgba(155,95,255,0.15); overflow: hidden; }
+    .faq-item[open] { border-color: rgba(155,95,255,0.4); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; color: #E8E8F0; font-weight: 600; cursor: pointer; list-style: none; font-size: 0.97rem; gap: 1rem; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-icon { color: #9B5FFF; font-size: 1.4rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-a { padding: 0 1.25rem 1rem; color: #8A8D99; line-height: 1.7; font-size: 0.94rem; margin: 0; }
     :root {
       --purple-dark: #5A00B8;
       --purple-light: #9B5FFF;
@@ -448,6 +465,46 @@
       }
     }
   </style>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta desarrollar una app para supermercado en Colombia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una app básica de domicilios para supermercado cuesta entre $15.000.000 y $35.000.000 COP para iOS y Android. Una app completa con catálogo, pagos en línea, programas de fidelización y seguimiento de pedido en tiempo real puede llegar a $60.000.000-$100.000.000 COP. Las soluciones white-label (personalizar una plataforma existente) pueden costar desde $5.000.000 COP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Vale la pena tener app propia o es mejor usar Rappi o Domicilios.com?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del volumen de pedidos. Con menos de 200 pedidos diarios, las plataformas de domicilios son más económicas pese a la comisión del 25-30%. Con más de 200 pedidos diarios, la app propia se paga sola en 8-12 meses. La app propia también permite construir base de datos de clientes, lanzar promociones propias y evitar dependencia de terceros."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué funciones debe tener la app de un supermercado colombiano?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las funciones esenciales son: catálogo con fotos y precios actualizados en tiempo real, carrito de compras, múltiples métodos de pago (PSE, Nequi, Daviplata, tarjeta), selección de franja horaria de entrega, seguimiento del pedido en mapa, y programa de puntos o cashback. La función más valorada por usuarios colombianos es el pago con Nequi o Daviplata."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo tarda desarrollar la app de un supermercado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una app básica tarda entre 3 y 5 meses en desarrollo. Una app completa con todas las integraciones (POS, inventario, pasarelas de pago) puede tardar 6-9 meses. Es importante incluir 1-2 meses de pruebas con usuarios reales antes del lanzamiento oficial para identificar problemas de usabilidad."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 

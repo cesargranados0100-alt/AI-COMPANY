@@ -50,6 +50,23 @@
   </script>
 
   <style>
+    .related-section { margin: 2.5rem 0; padding: 1.5rem; background: #12121C; border-radius: 14px; border: 1px solid #1E1E2E; }
+    .related-title { color: #9B5FFF; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .related-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+    .rel-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: #0D0D14; border-radius: 8px; border: 1px solid #1E1E2E; text-decoration: none; color: #E8E8F0; transition: border-color 0.2s; }
+    .rel-card:hover { border-color: rgba(155,95,255,0.4); text-decoration: none; }
+    .rel-emoji { font-size: 1.2rem; flex-shrink: 0; }
+    .rel-titulo { flex: 1; font-size: 0.9rem; font-weight: 500; }
+    .rel-arrow { color: #9B5FFF; flex-shrink: 0; }
+    .faq-section { margin: 3rem 0; padding: 2rem; background: #12121C; border-radius: 16px; border: 1px solid rgba(90,0,184,0.2); }
+    .faq-title { color: #9B5FFF; font-size: 1.6rem; margin-bottom: 1.5rem; font-family: 'Orbitron', sans-serif; }
+    .faq-item { margin-bottom: 0.75rem; background: #0D0D14; border-radius: 10px; border: 1px solid rgba(155,95,255,0.15); overflow: hidden; }
+    .faq-item[open] { border-color: rgba(155,95,255,0.4); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; color: #E8E8F0; font-weight: 600; cursor: pointer; list-style: none; font-size: 0.97rem; gap: 1rem; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-icon { color: #9B5FFF; font-size: 1.4rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-a { padding: 0 1.25rem 1rem; color: #8A8D99; line-height: 1.7; font-size: 0.94rem; margin: 0; }
     :root {
       --purple-dark: #5A00B8;
       --purple-light: #9B5FFF;
@@ -348,6 +365,46 @@
       .price-table th, .price-table td { padding: 0.5rem 0.6rem; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta el marketing digital para un restaurante en Colombia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un plan básico de redes sociales + pauta cuesta entre $800.000 y $2.500.000 COP mensuales. Un plan completo con gestión de redes, Google Ads, SEO local y email marketing va de $3.000.000 a $6.000.000 COP por mes. Muchos restaurantes empiezan con $500.000 en pauta y escalan según resultados."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué redes sociales funcionan mejor para restaurantes en Colombia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Instagram es la red más efectiva para restaurantes: el 78% de los colombianos busca comida en Instagram antes de salir. TikTok es la de mayor crecimiento, especialmente para restaurantes que quieren llegar a menores de 35 años. Facebook sigue siendo útil para audiencias mayores de 40 y para anuncios segmentados por zona."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo tarda ver resultados con marketing digital?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las campañas de pauta (Instagram Ads, Google Ads) generan resultados en 7-15 días. El posicionamiento orgánico en Google Maps tarda 2-3 meses. El SEO de la página web puede tardar 4-6 meses. Lo más rápido para un restaurante es combinar pauta digital + optimización de Google Business Profile."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo puede un restaurante conseguir más domicilios con marketing digital?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La estrategia más efectiva combina tres canales: WhatsApp Business automatizado para pedidos directos (sin comisión de Rappi), pauta en Instagram segmentada por radio de 3-5 km, y Google Business Profile optimizado para aparecer cuando buscan \"domicilios cerca de mí\". Restaurantes en Bogotá y Medellín reportan hasta 40% más pedidos directos con esta combinación."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
