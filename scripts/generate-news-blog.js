@@ -551,6 +551,79 @@ function actualizarSitemap(slug, dateStr) {
   });
 }
 
+// ─── Google Indexing ─────────────────────────────────────────────────────────
+async function pingGoogle(slug) {
+  const blogUrl    = `https://aicompanyco.com/blog/${slug}/`;
+  const sitemapUrl = 'https://aicompanyco.com/sitemap-main.xml';
+
+  // Ping 1: sitemap
+  try {
+    await fetchText(`https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`);
+    console.log('  → Google sitemap ping OK');
+  } catch (e) {
+    console.log(`  → Sitemap ping falló: ${e.message}`);
+  }
+
+  // Ping 2: Indexing API directa (gratis, requiere GOOGLE_INDEXING_KEY)
+  const key = process.env.GOOGLE_INDEXING_KEY;
+  if (!key) { console.log('  → Sin GOOGLE_INDEXING_KEY, se omite Indexing API'); return; }
+  try {
+    const creds = JSON.parse(key);
+    const token = await getGoogleToken(creds);
+    await notifyGoogleIndexing(blogUrl, token);
+    console.log(`  → Google Indexing API: URL notificada directamente`);
+  } catch (e) {
+    console.log(`  → Indexing API falló: ${e.message}`);
+  }
+}
+
+async function getGoogleToken(creds) {
+  const { createSign } = require('crypto');
+  const now     = Math.floor(Date.now() / 1000);
+  const header  = Buffer.from(JSON.stringify({ alg: 'RS256', typ: 'JWT' })).toString('base64url');
+  const payload = Buffer.from(JSON.stringify({
+    iss: creds.client_email,
+    scope: 'https://www.googleapis.com/auth/indexing',
+    aud: 'https://oauth2.googleapis.com/token',
+    exp: now + 3600,
+    iat: now,
+  })).toString('base64url');
+  const sign = createSign('RSA-SHA256');
+  sign.update(`${header}.${payload}`);
+  const jwt  = `${header}.${payload}.${sign.sign(creds.private_key, 'base64url')}`;
+  const body = `grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=${jwt}`;
+  const raw  = await new Promise((resolve, reject) => {
+    const req = https.request('https://oauth2.googleapis.com/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Content-Length': Buffer.byteLength(body) },
+    }, res => { let d = ''; res.on('data', c => d += c); res.on('end', () => resolve(d)); });
+    req.on('error', reject); req.write(body); req.end();
+  });
+  const data = JSON.parse(raw);
+  if (!data.access_token) throw new Error(data.error_description || 'Sin token');
+  return data.access_token;
+}
+
+async function notifyGoogleIndexing(url, token) {
+  const body = JSON.stringify({ url, type: 'URL_UPDATED' });
+  return new Promise((resolve, reject) => {
+    const req = https.request({
+      hostname: 'indexing.googleapis.com',
+      path: '/v3/urlNotifications:publish',
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) },
+    }, res => {
+      let d = ''; res.on('data', c => d += c);
+      res.on('end', () => {
+        const json = JSON.parse(d || '{}');
+        if (res.statusCode !== 200) reject(new Error(json.error?.message || d));
+        else resolve(json);
+      });
+    });
+    req.on('error', reject); req.write(body); req.end();
+  });
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
   // Cargar publicados
@@ -623,6 +696,9 @@ async function main() {
   published.push({ link: noticia.link, title: noticia.title, slug, date: dateStr });
   fs.writeFileSync(PUBLISHED_FILE, JSON.stringify(published, null, 2), 'utf8');
   console.log(`  ✓ Registrado en published-news.json`);
+
+  // Notificar a Google (sitemap ping + Indexing API)
+  await pingGoogle(slug);
 
   console.log(`\n✅ Artículo publicado: https://aicompanyco.com/blog/${slug}/`);
 

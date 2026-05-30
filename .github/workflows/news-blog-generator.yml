@@ -25,6 +25,8 @@ jobs:
 
       - name: Generate news blog post (sin IA, cero tokens)
         id: generator
+        env:
+          GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
         run: node scripts/generate-news-blog.js
 
       - name: Commit and push if new post
