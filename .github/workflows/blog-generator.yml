@@ -1,10 +1,11 @@
-name: Auto Blog Generator
+name: Auto Blog Generator (sin tokens)
 
 on:
   schedule:
-    # Every Monday and Thursday at 1:00 PM UTC = 8:00 AM Colombia (UTC-5)
-    - cron: '0 13 * * 1'
-    - cron: '0 13 * * 4'
+    # Lunes, miércoles y viernes a las 9am Colombia (2pm UTC)
+    - cron: '0 14 * * 1'
+    - cron: '0 14 * * 3'
+    - cron: '0 14 * * 5'
   workflow_dispatch:
     inputs:
       count:
@@ -29,28 +30,21 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Generate blog posts
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
+      - name: Generate blog posts (cero tokens)
         run: |
           COUNT=${{ github.event.inputs.count || '1' }}
-          echo "Generando $COUNT artículos..."
+          echo "Generando $COUNT artículos sin IA..."
           for i in $(seq 1 $COUNT); do
             echo "=== Artículo $i/$COUNT ==="
-            node scripts/generate-blog.js || echo "⚠️ Error en artículo $i, continuando..."
-            sleep 2
+            node scripts/generate-blog-template.js || echo "⚠️ Error en artículo $i"
           done
 
-      - name: Commit and push new posts
+      - name: Commit and push
         run: |
           git config user.name "AI Company Blog Bot"
           git config user.email "cesargranados0100@gmail.com"
           git add blog/ sitemap-seo.xml sitemap-main.xml
-          git diff --staged --quiet || git commit -m "blog: auto-publish ${{ github.event.inputs.count || '1' }} post(s) [skip ci]"
+          git diff --staged --quiet || git commit -m "blog: ${{ github.event.inputs.count || '1' }} artículo(s) nuevos [skip ci]"
           git push
 
       - name: Ping Google sitemap
