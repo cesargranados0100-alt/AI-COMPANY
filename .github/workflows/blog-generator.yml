@@ -34,13 +34,19 @@ jobs:
       - name: Generate blog post
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
         run: node scripts/generate-blog.js
 
       - name: Commit and push new post
         run: |
           git config user.name "AI Company Blog Bot"
           git config user.email "cesargranados0100@gmail.com"
-          git add blog/ sitemap-seo.xml
-          # Only commit if there are changes
+          git add blog/ sitemap-seo.xml sitemap-main.xml
           git diff --staged --quiet || git commit -m "blog: auto-publish new post [skip ci]"
           git push
+
+      - name: Ping Google sitemap
+        run: |
+          curl -s "https://www.google.com/ping?sitemap=https://aicompanyco.com/sitemap.xml" || true
+          curl -s "https://www.google.com/ping?sitemap=https://aicompanyco.com/sitemap-main.xml" || true
+          echo "✅ Google notificado"

@@ -16,7 +16,8 @@ const Anthropic = require('@anthropic-ai/sdk');
 const ROOT = path.resolve(__dirname, '..');
 const TOPICS_FILE = path.join(__dirname, 'blog-topics.json');
 const BLOG_DIR = path.join(ROOT, 'blog');
-const SITEMAP_SEO = path.join(ROOT, 'sitemap-seo.xml');
+const SITEMAP_SEO  = path.join(ROOT, 'sitemap-seo.xml');
+const SITEMAP_MAIN = path.join(ROOT, 'sitemap-main.xml');
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
@@ -117,19 +118,112 @@ function updateBlogIndex(topic, dateStr) {
 // ─── sitemap updater ─────────────────────────────────────────────────────────
 
 function updateSitemap(slug, dateStr) {
-  const url = `https://aicompanyco.com/blog/${slug}/`;
-  const entry = `  <url>\n    <loc>${url}</loc>\n    <lastmod>${dateStr}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`;
+  const url   = `https://aicompanyco.com/blog/${slug}/`;
+  const entry = `  <url>\n    <loc>${url}</loc>\n    <lastmod>${dateStr}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.75</priority>\n  </url>`;
 
+  // ── sitemap-seo.xml ──────────────────────────────────────────────────────
   if (!fs.existsSync(SITEMAP_SEO)) {
-    const content = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entry}\n</urlset>`;
-    fs.writeFileSync(SITEMAP_SEO, content, 'utf8');
-    return;
+    fs.writeFileSync(SITEMAP_SEO,
+      `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entry}\n</urlset>`,
+      'utf8');
+  } else {
+    let s = fs.readFileSync(SITEMAP_SEO, 'utf8');
+    if (!s.includes(url)) {
+      s = s.replace('</urlset>', `${entry}\n</urlset>`);
+      fs.writeFileSync(SITEMAP_SEO, s, 'utf8');
+    }
   }
 
-  let sitemap = fs.readFileSync(SITEMAP_SEO, 'utf8');
-  if (sitemap.includes(url)) return; // already there
-  sitemap = sitemap.replace('</urlset>', `${entry}\n</urlset>`);
-  fs.writeFileSync(SITEMAP_SEO, sitemap, 'utf8');
+  // ── sitemap-main.xml (el que Google usa para indexar el blog) ────────────
+  if (fs.existsSync(SITEMAP_MAIN)) {
+    let s = fs.readFileSync(SITEMAP_MAIN, 'utf8');
+    if (!s.includes(url)) {
+      s = s.replace('</urlset>', `${entry}\n</urlset>`);
+      fs.writeFileSync(SITEMAP_MAIN, s, 'utf8');
+      console.log(`  → sitemap-main.xml actualizado con ${url}`);
+    }
+  }
+}
+
+// ─── Google Indexing ping ────────────────────────────────────────────────────
+
+async function pingGoogle(slug) {
+  const blogUrl = `https://aicompanyco.com/blog/${slug}/`;
+  const sitemapUrl = 'https://aicompanyco.com/sitemap.xml';
+
+  // Ping 1: notificar sitemap actualizado
+  try {
+    await fetchUrl(`https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`);
+    console.log(`  → Google sitemap ping OK`);
+  } catch (e) {
+    console.log(`  → Google sitemap ping falló: ${e.message}`);
+  }
+
+  // Ping 2: Google Indexing API (si hay credenciales configuradas)
+  const indexingKey = process.env.GOOGLE_INDEXING_KEY;
+  if (indexingKey) {
+    try {
+      const creds = JSON.parse(indexingKey);
+      const token = await getGoogleToken(creds);
+      await notifyGoogleIndexing(blogUrl, token);
+      console.log(`  → Google Indexing API: ${blogUrl} notificada`);
+    } catch (e) {
+      console.log(`  → Google Indexing API falló: ${e.message}`);
+    }
+  }
+}
+
+async function getGoogleToken(creds) {
+  const now = Math.floor(Date.now() / 1000);
+  const header = Buffer.from(JSON.stringify({ alg: 'RS256', typ: 'JWT' })).toString('base64url');
+  const payload = Buffer.from(JSON.stringify({
+    iss: creds.client_email,
+    scope: 'https://www.googleapis.com/auth/indexing',
+    aud: 'https://oauth2.googleapis.com/token',
+    exp: now + 3600,
+    iat: now,
+  })).toString('base64url');
+
+  const { createSign } = require('crypto');
+  const sign = createSign('RSA-SHA256');
+  sign.update(`${header}.${payload}`);
+  const sig = sign.sign(creds.private_key, 'base64url');
+  const jwt = `${header}.${payload}.${sig}`;
+
+  const body = `grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=${jwt}`;
+  const res = await fetchUrl('https://oauth2.googleapis.com/token', {
+    method: 'POST', body, contentType: 'application/x-www-form-urlencoded'
+  });
+  const data = JSON.parse(res);
+  if (!data.access_token) throw new Error(data.error_description || 'No token');
+  return data.access_token;
+}
+
+async function notifyGoogleIndexing(url, token) {
+  return new Promise((resolve, reject) => {
+    const body = JSON.stringify({ url, type: 'URL_UPDATED' });
+    const req = require('https').request({
+      hostname: 'indexing.googleapis.com',
+      path: '/v3/urlNotifications:publish',
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(body),
+      }
+    }, (res) => {
+      let d = '';
+      res.on('data', c => d += c);
+      res.on('end', () => {
+        const json = JSON.parse(d || '{}');
+        if (res.statusCode !== 200) reject(new Error(json.error?.message || d));
+        else resolve(json);
+      });
+    });
+    req.on('error', reject);
+    req.write(body);
+    req.end();
+  });
 }
 
 // ─── HTML builder (used as fallback structure context for Claude) ────────────
@@ -281,12 +375,15 @@ async function main() {
   fs.writeFileSync(outFile, html, 'utf8');
   console.log(`Saved: blog/${topic.slug}/index.html`);
 
-  // update sitemap
+  // update sitemaps (seo + main)
   updateSitemap(topic.slug, dateStr);
-  console.log('Sitemap updated');
+  console.log('Sitemaps updated');
 
   // update blog index
   updateBlogIndex(topic, dateStr);
+
+  // notify Google
+  await pingGoogle(topic.slug);
 
   // print summary for CI log
   console.log(`\n✓ Published: ${topic.titulo}`);
