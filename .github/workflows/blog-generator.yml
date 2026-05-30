@@ -60,3 +60,15 @@ jobs:
             -H "x-seo-secret: ${SEO_NOTIFY_SECRET}" \
             -d "{\"titulo\": \"${{ steps.generator.outputs.titulo }}\", \"slug\": \"${{ steps.generator.outputs.slug }}\", \"tipo\": \"blog\"}" \
             && echo "✅ Telegram notificado" || echo "⚠️ Telegram no disponible"
+
+      - name: Alerta Telegram si Claude falló
+        if: failure() && steps.generator.outcome == 'failure'
+        env:
+          SEO_NOTIFY_SECRET: ${{ secrets.SEO_NOTIFY_SECRET }}
+          PLATAFORMA_URL: ${{ secrets.PLATAFORMA_URL }}
+        run: |
+          curl -s -X POST "${PLATAFORMA_URL}/api/seo/alerta" \
+            -H "Content-Type: application/json" \
+            -H "x-seo-secret: ${SEO_NOTIFY_SECRET}" \
+            -d '{"tipo": "tokens_agotados"}' \
+            && echo "✅ Alerta enviada" || echo "⚠️ No se pudo enviar alerta"
